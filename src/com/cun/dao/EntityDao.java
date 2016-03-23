@@ -16,7 +16,15 @@ public interface EntityDao {
 	
 	public Object queryElementBykey(Class clazz,String key, Object value);
 	
+	public Integer getElementNumByParmater(Class clazz,String key, Object value);
+	
+	public List<Object> getElementByParmaterPage(Class clazz,Page page,String key, Object value);// 查询数据信息的方法
+	
 	public Object queryElementByParmaterPairs(Class clazz,String[] keys, Object[] values);
+	
+	public Integer getElementNumByParmaterPairs(Class clazz,String[] keys, Object[] values); 
+	
+	public List<Object> getElementByParmaterPairsPage(Class clazz,Page page,String[] keys, Object[] values);// 查询数据信息的方法
 	
 	public List<Object> queryAllElement(Class clazz);
 	

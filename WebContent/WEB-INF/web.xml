@@ -66,7 +66,15 @@
     <servlet-name>changepwd</servlet-name>
     <url-pattern>/changepwd</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <display-name>user-connoisseuradd</display-name>
+    <servlet-name>connoisseuradd</servlet-name>
+    <jsp-file>/WEB-INF/connoisseuradd.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>connoisseuradd</servlet-name>
+    <url-pattern>/connoisseuradd</url-pattern>
+  </servlet-mapping>
   <servlet>
     <display-name>sys-vip</display-name>
     <servlet-name>vip</servlet-name>
@@ -76,7 +84,6 @@
     <servlet-name>vip</servlet-name>
     <url-pattern>/vip</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <display-name>sys-banner</display-name>
     <servlet-name>banner</servlet-name>
@@ -86,7 +93,6 @@
     <servlet-name>banner</servlet-name>
     <url-pattern>/banner</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <display-name>sys-opinion</display-name>
     <servlet-name>opinion</servlet-name>
@@ -96,7 +102,6 @@
     <servlet-name>opinion</servlet-name>
     <url-pattern>/opinion</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <display-name>sys-connoisseur</display-name>
     <servlet-name>connoisseur</servlet-name>
@@ -106,7 +111,6 @@
     <servlet-name>connoisseur</servlet-name>
     <url-pattern>/connoisseur</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <display-name>sys-topic</display-name>
     <servlet-name>topic</servlet-name>
@@ -116,7 +120,6 @@
     <servlet-name>topic</servlet-name>
     <url-pattern>/topic</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <display-name>sys-wish</display-name>
     <servlet-name>wish</servlet-name>
@@ -126,7 +129,6 @@
     <servlet-name>wish</servlet-name>
     <url-pattern>/wish</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <display-name>sys-appointment</display-name>
     <servlet-name>appointment</servlet-name>
@@ -136,7 +138,6 @@
     <servlet-name>appointment</servlet-name>
     <url-pattern>/appointment</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <display-name>sys-balance</display-name>
     <servlet-name>balance</servlet-name>
@@ -146,17 +147,6 @@
     <servlet-name>balance</servlet-name>
     <url-pattern>/balance</url-pattern>
   </servlet-mapping>
-  
-  <servlet>
-    <display-name>sys-user</display-name>
-    <servlet-name>user</servlet-name>
-    <jsp-file>/WEB-INF/user.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>user</servlet-name>
-    <url-pattern>/user</url-pattern>
-  </servlet-mapping>
-  
   <servlet>
     <display-name>IndexServlet</display-name>
     <servlet-name>IndexServlet</servlet-name>
@@ -204,5 +194,35 @@
   <servlet-mapping>
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/LogoutServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminServlet</display-name>
+    <servlet-name>AdminServlet</servlet-name>
+    <servlet-class>com.cun.servlet.AdminServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminServlet</servlet-name>
+    <url-pattern>/AdminServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>StuServlet</display-name>
+    <servlet-name>StuServlet</servlet-name>
+    <servlet-class>com.cun.servlet.StuServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StuServlet</servlet-name>
+    <url-pattern>/StuServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TeachServlet</display-name>
+    <servlet-name>TeachServlet</servlet-name>
+    <servlet-class>com.cun.servlet.TeachServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TeachServlet</servlet-name>
+    <url-pattern>/TeachServlet</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -15,5 +15,6 @@
 		<property name="email" column="email" />
 		<property name="type" column="type" />
 		<property name="status" column="status" />
+		<property name="createtime" column="createtime" />
 	</class>
 </hibernate-mapping>

@@ -1,6 +1,7 @@
 package com.cun.model;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 public class User implements Serializable {
 
@@ -13,6 +14,7 @@ public class User implements Serializable {
 	private String phone;
 	private String type;
 	private String status;
+	private Timestamp createtime;
 
 	public User() {
 	}
@@ -101,6 +103,14 @@ public class User implements Serializable {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public Timestamp getCreatetime() {
+		return createtime;
+	}
+
+	public void setCreatetime(Timestamp createtime) {
+		this.createtime = createtime;
 	}
 
 	@Override

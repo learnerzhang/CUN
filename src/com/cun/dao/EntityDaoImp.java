@@ -106,4 +106,54 @@ public class EntityDaoImp implements EntityDao {
 		return criteria.uniqueResult();
 	}
 
+	@Override
+	public List<Object> getElementByParmaterPage(Class clazz, Page page, String key, Object value) {
+		// TODO Auto-generated method stub
+		Transaction tr = session.beginTransaction();// 开启事务
+		Criteria criteria = session.createCriteria(clazz);
+		@SuppressWarnings("unchecked")
+		List<Object> list = criteria.add(Restrictions.eq(key, value)).setFirstResult(page.getBeginIndex()).setMaxResults(page.getPageSize()).list();
+		tr.commit();
+		return list;
+	}
+	
+	@Override
+	public Integer getElementNumByParmater(Class clazz,String key, Object value) {
+		// TODO Auto-generated method stub
+		Transaction tr = session.beginTransaction();// 开启事务
+		Criteria criteria = session.createCriteria(clazz);
+		@SuppressWarnings("unchecked")
+		List<Object> list = criteria.add(Restrictions.eq(key, value)).list();
+		tr.commit();
+		return list.size();
+	}
+
+	@Override
+	public Integer getElementNumByParmaterPairs(Class clazz,String[] keys, Object[] values) {
+		// TODO Auto-generated method stub
+		Transaction tr = session.beginTransaction();// 开启事务
+		Criteria criteria = session.createCriteria(clazz);
+		for (int i = 0; i < keys.length; i++) {
+			criteria.add(Restrictions.eq(keys[i], values[i]));//添加约束
+		}
+		@SuppressWarnings("unchecked")
+		List<Object> list = criteria.list();
+		tr.commit();
+		return list.size();
+	}
+	
+	@Override
+	public List<Object> getElementByParmaterPairsPage(Class clazz, Page page, String[] keys, Object[] values) {
+		// TODO Auto-generated method stub
+		Transaction tr = session.beginTransaction();// 开启事务
+		Criteria criteria = session.createCriteria(clazz);
+		for (int i = 0; i < keys.length; i++) {
+			criteria.add(Restrictions.eq(keys[i], values[i]));//添加约束
+		}
+		@SuppressWarnings("unchecked")
+		List<Object> list = criteria.setFirstResult(page.getBeginIndex()).setMaxResults(page.getPageSize()).list();
+		tr.commit();
+		return list;
+	}
+
 }

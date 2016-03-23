@@ -53,8 +53,18 @@ $(function(){
 				</dt>
 				<dd>
 					<img class="coin11" src="img/coin111.png" /><img class="coin22"
-						src="img/coin222.png" /><a class="cks" href="user"
-						target="main">管理员管理</a><img class="icon5" src="img/coin21.png" />
+						src="img/coin222.png" /><a class="cks" href="AdminServlet?type=list&page=1"
+						target="main">管理员</a><img class="icon5" src="img/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/coin111.png" /><img class="coin22"
+						src="img/coin222.png" /><a class="cks" href="TeachServlet?type=list&page=1"
+						target="main">教师组</a><img class="icon5" src="img/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/coin111.png" /><img class="coin22"
+						src="img/coin222.png" /><a class="cks" href="StuServlet?type=list&page=1"
+						target="main">学生组</a><img class="icon5" src="img/coin21.png" />
 				</dd>
 			</dl>
 			<dl class="system_log">
@@ -64,6 +74,11 @@ $(function(){
 						src="img/coin19.png" /><img class="icon4"
 						src="img/coin20.png" />
 				</dt>
+				<dd>
+					<img class="coin11" src="img/coin111.png" /><img class="coin22"
+						src="img/coin222.png" /><a class="cks" href="banner"
+						target="main">语料管理</a><img class="icon5" src="img/coin21.png" />
+				</dd>
 				<dd>
 					<img class="coin11" src="img/coin111.png" /><img class="coin22"
 						src="img/coin222.png" /><a class="cks" href="banner"

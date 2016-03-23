@@ -38,10 +38,8 @@ public class LogoutServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		try {
-			
 			session.removeAttribute("user");
 			jsonObject.put("code", "0");
-			System.out.println("xxxxxxxxxxxxxxxxxxx");
 		} catch (Exception e) {
 			// TODO: handle exception
 			jsonObject.put("code", "1");
