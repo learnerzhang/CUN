@@ -9,6 +9,7 @@
 <script type="text/javascript" src="js/public.js"></script>
 <script type="text/javascript">
 $(function(){
+	
 	$("#logout").click(function(){
 		$.ajax({
 			contentType:"application/json;charset=utf-8",
@@ -66,6 +67,11 @@ $(function(){
 						src="img/coin222.png" /><a class="cks" href="StuServlet?type=list&page=1"
 						target="main">学生组</a><img class="icon5" src="img/coin21.png" />
 				</dd>
+				<dd>
+					<img class="coin11" src="img/coin111.png" /><img class="coin22"
+						src="img/coin222.png" /><a href="opinion" target="main"
+						class="cks">相关建议</a><img class="icon5" src="img/coin21.png" />
+				</dd>
 			</dl>
 			<dl class="system_log">
 				<dt>
@@ -92,10 +98,10 @@ $(function(){
 				</dd>
 				<dd>
 					<img class="coin11" src="img/coin111.png" /><img class="coin22" src="img/coin222.png" />
-					<a class="cks" href="opinion" target="main">具体详情</a><img class="icon5" src="img/coin21.png" />
+					<a class="cks" href="MarkDataServlet?type=all" target="main">标记详情</a><img class="icon5" src="img/coin21.png" />
 				</dd>
 			</dl>
-			<dl class="system_log">
+			<!-- <dl class="system_log">
 				<dt>
 					<img class="icon1" src="img/coin07.png" /><img class="icon2"
 						src="img/coin08.png" /> 会员管理<img class="icon3"
@@ -108,8 +114,8 @@ $(function(){
 					<a href="vip" target="main" class="cks">会员管理</a>
 					<img class="icon5" src="img/coin21.png" />
 				</dd>
-			</dl>
-			<dl class="system_log">
+			</dl> -->
+			<!-- <dl class="system_log">
 				<dt>
 					<img class="icon1" src="img/coin10.png" /><img class="icon2"
 						src="img/coin09.png" /> 行家管理<img class="icon3"
@@ -122,48 +128,57 @@ $(function(){
 						target="main" class="cks">行家管理</a><img class="icon5"
 						src="img/coin21.png" />
 				</dd>
-			</dl>
-			<dl class="system_log">
-				<dt>
-					<img class="icon1" src="img/coin11.png" /><img class="icon2"
-						src="img/coin12.png" /> 话题管理<img class="icon3"
-						src="img/coin19.png" /><img class="icon4"
-						src="img/coin20.png" />
-				</dt>
-				<dd>
-					<img class="coin11" src="img/coin111.png" /><img class="coin22"
-						src="img/coin222.png" /><a href="topic" target="main"
-						class="cks">话题管理</a><img class="icon5" src="img/coin21.png" />
-				</dd>
-			</dl>
+			</dl> -->
 			<dl class="system_log">
 				<dt>
 					<img class="icon1" src="img/coin14.png" /><img class="icon2"
-						src="img/coin13.png" /> 心愿管理<img class="icon3"
+						src="img/coin13.png" />情感标记<img class="icon3"
 						src="img/coin19.png" /><img class="icon4"
 						src="img/coin20.png" />
 				</dt>
 				<dd>
 					<img class="coin11" src="img/coin111.png" /><img class="coin22"
-						src="img/coin222.png" /><a href="wish" target="main"
-						class="cks">心愿管理</a><img class="icon5" src="img/coin21.png" />
+						src="img/coin222.png" /><a href="MarkTendencyServlet" target="main"
+						class="cks">开始标记</a><img class="icon5" src="img/coin21.png" />
 				</dd>
 			</dl>
 			<dl class="system_log">
 				<dt>
 					<img class="icon1" src="img/coin15.png" /><img class="icon2"
-						src="img/coin16.png" /> 约见管理<img class="icon3"
+						src="img/coin16.png" />特征标记<img class="icon3"
 						src="img/coin19.png" /><img class="icon4"
 						src="img/coin20.png" />
 				</dt>
 				<dd>
 					<img class="coin11" src="img/coin111.png" /><img class="coin22"
-						src="img/coin222.png" /><a href="appointment"
-						target="main" class="cks">约见管理</a><img class="icon5"
+						src="img/coin222.png" /><a href="MarkFeatureServlet" target="main" class="cks">开始标记</a><img class="icon5"
 						src="img/coin21.png" />
 				</dd>
 			</dl>
 			<dl class="system_log">
+				<dt>
+					<img class="icon1" src="img/coin11.png" /><img class="icon2"
+						src="img/coin12.png" /> 工作详情<img class="icon3"
+						src="img/coin19.png" /><img class="icon4"
+						src="img/coin20.png" />
+				</dt>
+				<dd>
+					<img class="coin11" src="img/coin111.png" /><img class="coin22"
+						src="img/coin222.png" /><a href="MarkDataServlet?type=info" target="main"
+						class="cks">个人数据</a><img class="icon5" src="img/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/coin111.png" /><img class="coin22"
+						src="img/coin222.png" /><a href="MarkDataServlet?type=other" target="main"
+						class="cks">对比数据</a><img class="icon5" src="img/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/coin111.png" /><img class="coin22"
+						src="img/coin222.png" /><a href="useropinion" target="main"
+						class="cks">反馈建议</a><img class="icon5" src="img/coin21.png" />
+				</dd>
+			</dl>
+			<!-- <dl class="system_log">
 				<dt>
 					<img class="icon1" src="img/coin17.png" /><img class="icon2"
 						src="img/coin18.png" /> 收支管理<img class="icon3"
@@ -176,7 +191,7 @@ $(function(){
 						target="main" class="cks">收支管理</a><img class="icon5"
 						src="img/coin21.png" />
 				</dd>
-			</dl>
+			</dl> -->
 			<dl class="system_log">
 				<dt>
 					<img class="icon1" src="img/coinL1.png" /><img class="icon2"
@@ -186,9 +201,13 @@ $(function(){
 				</dt>
 				<dd>
 					<img class="coin11" src="img/coin111.png" /><img class="coin22"
-						src="img/coin222.png" /><a href="changepwd"
-						target="main" class="cks">修改密码</a><img class="icon5"
-						src="img/coin21.png" />
+						src="img/coin222.png" /><a href="info" target="main" class="cks">个人信息</a><img
+						class="icon5" src="img/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/coin111.png" /><img class="coin22" src="img/coin222.png" />
+					<a href="changepwd" target="main" class="cks">修改密码</a><img 
+						class="icon5" src="img/coin21.png" />
 				</dd>
 				<dd>
 					<img class="coin11" src="img/coin111.png" /><img class="coin22"

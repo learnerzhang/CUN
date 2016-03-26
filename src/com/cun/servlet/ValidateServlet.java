@@ -44,11 +44,13 @@ public class ValidateServlet extends HttpServlet {
 		String vcode = request.getParameter("vcode");
 		log.info(username+":"+password+":"+vcode);*/
 		response.setContentType("text/plain;charset=utf-8");
+		JSONObject object = new JSONObject();
+		
 		PrintWriter out = response.getWriter();
 		String uString = IOUtil.readJSONString(request);
 		JSONObject jsonObject = JSONObject.fromObject(uString);
 		log.info(uString);
-		JSONObject object = new JSONObject();
+		
 		String vcode = (String) jsonObject.get("vcode");
 		HttpSession session = request.getSession();
 		String captcha = (String) session.getAttribute("captcha");
@@ -68,14 +70,14 @@ public class ValidateServlet extends HttpServlet {
 				HttpSession httpSession = request.getSession();
 				httpSession.setAttribute("user", u);
 				
-				jsonObject.put("code", "0");//ok
+				object.put("code", "0");//ok
 			}else if (rs==2) {
-				jsonObject.put("code", "2");//no username
+				object.put("code", "2");//no username
 			}else if (rs==3) {
-				jsonObject.put("code", "3");//no password
+				object.put("code", "3");//no password
 			}
 		}
-		out.write(jsonObject.toString());
+		out.write(object.toString());
 	}
 
 	/**

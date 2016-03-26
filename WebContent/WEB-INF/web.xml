@@ -2,12 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>CUN</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
     <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
     <description></description>
@@ -66,6 +61,27 @@
     <servlet-name>changepwd</servlet-name>
     <url-pattern>/changepwd</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <display-name>user-info</display-name>
+    <servlet-name>info</servlet-name>
+    <jsp-file>/WEB-INF/sys/userinfo.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>info</servlet-name>
+    <url-pattern>/info</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <display-name>user_opinion</display-name>
+    <servlet-name>useropinion</servlet-name>
+    <jsp-file>/WEB-INF/sys/user_opinion.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>useropinion</servlet-name>
+    <url-pattern>/useropinion</url-pattern>
+  </servlet-mapping>
+  
+  
+  
   <servlet>
     <display-name>user-connoisseuradd</display-name>
     <servlet-name>connoisseuradd</servlet-name>
@@ -244,5 +260,45 @@
   <servlet-mapping>
     <servlet-name>FeatureServlet</servlet-name>
     <url-pattern>/FeatureServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UserServlet</display-name>
+    <servlet-name>UserServlet</servlet-name>
+    <servlet-class>com.cun.servlet.UserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserServlet</servlet-name>
+    <url-pattern>/UserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MarkTendencyServlet</display-name>
+    <servlet-name>MarkTendencyServlet</servlet-name>
+    <servlet-class>com.cun.servlet.MarkTendencyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MarkTendencyServlet</servlet-name>
+    <url-pattern>/MarkTendencyServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MarkFeatureServlet</display-name>
+    <servlet-name>MarkFeatureServlet</servlet-name>
+    <servlet-class>com.cun.servlet.MarkFeatureServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MarkFeatureServlet</servlet-name>
+    <url-pattern>/MarkFeatureServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MarkDataServlet</display-name>
+    <servlet-name>MarkDataServlet</servlet-name>
+    <servlet-class>com.cun.servlet.MarkDataServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MarkDataServlet</servlet-name>
+    <url-pattern>/MarkDataServlet</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -79,7 +79,6 @@ public class AdminServlet extends HttpServlet {
 					// TODO: handle exception
 				}
 			}
-			out.write(object.toString());
 			return;
 		}/*else if (type.equals("edit")){
 			String id = request.getParameter("id");

@@ -6,7 +6,6 @@
 <title>头部-有点</title>
 <link rel="stylesheet" type="text/css" href="css/css.css" />
 </head>
-
 <body>
 	<div id="pageAll">
 		<div class="pageTop">
