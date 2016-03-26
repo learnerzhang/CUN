@@ -13,7 +13,7 @@
     <description></description>
     <display-name>index-head</display-name>
     <servlet-name>head</servlet-name>
-    <jsp-file>/WEB-INF/inc/head.jsp</jsp-file>
+    <jsp-file>/WEB-INF/sys/inc/head.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>head</servlet-name>
@@ -23,7 +23,7 @@
     <description></description>
     <display-name>index-foot</display-name>
     <servlet-name>foot</servlet-name>
-    <jsp-file>/WEB-INF/inc/foot.jsp</jsp-file>
+    <jsp-file>/WEB-INF/sys/inc/foot.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>foot</servlet-name>
@@ -33,7 +33,7 @@
     <description></description>
     <display-name>index-left</display-name>
     <servlet-name>left</servlet-name>
-    <jsp-file>/WEB-INF/inc/left.jsp</jsp-file>
+    <jsp-file>/WEB-INF/sys/inc/left.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>left</servlet-name>
@@ -42,7 +42,7 @@
   <servlet>
     <display-name>index-main</display-name>
     <servlet-name>main</servlet-name>
-    <jsp-file>/WEB-INF/main.jsp</jsp-file>
+    <jsp-file>/WEB-INF/sys/main.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>main</servlet-name>
@@ -51,7 +51,7 @@
   <servlet>
     <display-name>sys-login</display-name>
     <servlet-name>login</servlet-name>
-    <jsp-file>/WEB-INF/login.jsp</jsp-file>
+    <jsp-file>/WEB-INF/sys/login.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>login</servlet-name>
@@ -60,7 +60,7 @@
   <servlet>
     <display-name>user-changepwd</display-name>
     <servlet-name>changepwd</servlet-name>
-    <jsp-file>/WEB-INF/changepwd.jsp</jsp-file>
+    <jsp-file>/WEB-INF/sys/changepwd.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>changepwd</servlet-name>
@@ -69,7 +69,7 @@
   <servlet>
     <display-name>user-connoisseuradd</display-name>
     <servlet-name>connoisseuradd</servlet-name>
-    <jsp-file>/WEB-INF/connoisseuradd.jsp</jsp-file>
+    <jsp-file>/WEB-INF/sys/connoisseuradd.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>connoisseuradd</servlet-name>
@@ -78,7 +78,7 @@
   <servlet>
     <display-name>sys-vip</display-name>
     <servlet-name>vip</servlet-name>
-    <jsp-file>/WEB-INF/vip.jsp</jsp-file>
+    <jsp-file>/WEB-INF/sys/vip.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>vip</servlet-name>
@@ -87,7 +87,7 @@
   <servlet>
     <display-name>sys-banner</display-name>
     <servlet-name>banner</servlet-name>
-    <jsp-file>/WEB-INF/banner.jsp</jsp-file>
+    <jsp-file>/WEB-INF/sys/banner.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>banner</servlet-name>
@@ -96,7 +96,7 @@
   <servlet>
     <display-name>sys-opinion</display-name>
     <servlet-name>opinion</servlet-name>
-    <jsp-file>/WEB-INF/opinion.jsp</jsp-file>
+    <jsp-file>/WEB-INF/sys/opinion.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>opinion</servlet-name>
@@ -114,7 +114,7 @@
   <servlet>
     <display-name>sys-topic</display-name>
     <servlet-name>topic</servlet-name>
-    <jsp-file>/WEB-INF/topic.jsp</jsp-file>
+    <jsp-file>/WEB-INF/sys/topic.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>topic</servlet-name>
@@ -123,7 +123,7 @@
   <servlet>
     <display-name>sys-wish</display-name>
     <servlet-name>wish</servlet-name>
-    <jsp-file>/WEB-INF/wish.jsp</jsp-file>
+    <jsp-file>/WEB-INF/sys/wish.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>wish</servlet-name>
@@ -132,7 +132,7 @@
   <servlet>
     <display-name>sys-appointment</display-name>
     <servlet-name>appointment</servlet-name>
-    <jsp-file>/WEB-INF/appointment.jsp</jsp-file>
+    <jsp-file>/WEB-INF/sys/appointment.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>appointment</servlet-name>
@@ -141,7 +141,7 @@
   <servlet>
     <display-name>sys-balance</display-name>
     <servlet-name>balance</servlet-name>
-    <jsp-file>/WEB-INF/balance.jsp</jsp-file>
+    <jsp-file>/WEB-INF/sys/balance.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>balance</servlet-name>
@@ -224,5 +224,25 @@
   <servlet-mapping>
     <servlet-name>TeachServlet</servlet-name>
     <url-pattern>/TeachServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TendencyServlet</display-name>
+    <servlet-name>TendencyServlet</servlet-name>
+    <servlet-class>com.cun.servlet.TendencyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TendencyServlet</servlet-name>
+    <url-pattern>/TendencyServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FeatureServlet</display-name>
+    <servlet-name>FeatureServlet</servlet-name>
+    <servlet-class>com.cun.servlet.FeatureServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FeatureServlet</servlet-name>
+    <url-pattern>/FeatureServlet</url-pattern>
   </servlet-mapping>
 </web-app>

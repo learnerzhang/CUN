@@ -53,7 +53,7 @@ public class StuServlet extends HttpServlet {
 			List<Object> stus = service.getAllUser(page, type);
 			request.setAttribute("stus", stus);
 			request.setAttribute("page", page);
-			request.getRequestDispatcher("WEB-INF/stu.jsp").forward(request, response);
+			request.getRequestDispatcher("WEB-INF/sys/stu.jsp").forward(request, response);
 			return;
 		} else if (ptype.equals("add")) {
 			response.setContentType("text/plain;charset=utf-8");

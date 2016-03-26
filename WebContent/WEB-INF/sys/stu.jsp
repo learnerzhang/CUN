@@ -7,9 +7,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>管理员管理-有点</title>
 <link rel="stylesheet" type="text/css" href="css/css.css" />
+<link rel="stylesheet" type="text/css" href="css/reset.css" />
+<link rel="stylesheet" type="text/css" href="css/pagination.css" />
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/md5.js"></script>
 <script type="text/javascript" src="js/jquery.json-2.4.js"></script>
+<script type="text/javascript" src="js/jquery.pagination.js"></script>
 <!-- <script type="text/javascript" src="js/page.js" ></script> -->
 <script type="text/javascript">
 
@@ -34,8 +37,15 @@
 			}
 		});	
 	}
+	function PageCallback(index) { 
+		window.location.href="StuServlet?type=list&page="+(index+1);
+    }
 	$(function() {
 		var id = 0;
+		$("#Pagination").pagination("${page.totalPage }",{
+			current_page:"${page.currentPage-1}",
+			callback: PageCallback
+		});
 		//广告弹出框
 		$(".delban").click(function(){
 		  	id = $(this).attr("id");
@@ -161,7 +171,14 @@
 						</c:forEach>
 						
 					</table>
-					<div class="paging">此处是分页</div>
+					<div class="pages">
+						<div id="Pagination" style="float: right;"></div>
+				        <%-- <div class="searchPage" style="float: right;">
+				        	<span class="page-sum">共<strong class="allPage">${page.totalPage }</strong>页</span>
+				          	<span class="page-go">跳转<input type="text">页</span>
+				        	<a href="javascript:;" class="page-btn">GO</a>
+				        </div> --%>
+					</div>
 				</div>
 				<!-- user 表格 显示 end-->
 			</div>

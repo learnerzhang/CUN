@@ -1,24 +1,21 @@
 package com.cun.dao;
 
-import java.util.Iterator;
 import java.util.List;
-
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.cun.model.Page;
 
 public class EntityDaoImp implements EntityDao {
 
-	Session session = HibernateSessionFactory.getSession();// 获得session
-
 	@Override
 	public void save(Object object) {
 		// TODO Auto-generated method stub
+		Session session = HibernateSessionFactory.getSession();// 获得session
 		Transaction tr = session.beginTransaction();// 开启事务
 		session.save(object);
 		tr.commit();
@@ -27,6 +24,7 @@ public class EntityDaoImp implements EntityDao {
 	@Override
 	public void delete(Object object) {
 		// TODO Auto-generated method stub
+		Session session = HibernateSessionFactory.getSession();// 获得session
 		Transaction tr = session.beginTransaction();// 开启事务
 		session.delete(object);
 		tr.commit();
@@ -35,6 +33,7 @@ public class EntityDaoImp implements EntityDao {
 	@Override
 	public void update(Object object) {
 		// TODO Auto-generated method stub
+		Session session = HibernateSessionFactory.getSession();// 获得session
 		Transaction tr = session.beginTransaction();// 开启事务
 		session.update(object);
 		session.flush();
@@ -45,6 +44,7 @@ public class EntityDaoImp implements EntityDao {
 	@Override
 	public Object queryById(Class clazz, Integer id) {
 		// TODO Auto-generated method stub
+		Session session = HibernateSessionFactory.getSession();// 获得session
 		Transaction tr = session.beginTransaction();// 开启事务
 		return session.load(clazz, id);
 	}
@@ -53,6 +53,7 @@ public class EntityDaoImp implements EntityDao {
 	@Override
 	public List<Object> queryAllElement(Class clazz) {
 		// TODO Auto-generated method stub
+		Session session = HibernateSessionFactory.getSession();// 获得session
 		Transaction tr = session.beginTransaction();// 开启事务
 		List<Object> list = null;
 		list = session.createQuery("from " + clazz).list();
@@ -63,6 +64,7 @@ public class EntityDaoImp implements EntityDao {
 	@Override
 	public void deleteElement(Class clazz, Integer id) {
 		// TODO Auto-generated method stub
+		Session session = HibernateSessionFactory.getSession();// 获得session
 		Transaction tr = session.beginTransaction();// 开启事务
 		Query query = (Query) session.createQuery("delete " + clazz + " where id=:id");
 		query.setParameter("id", id);
@@ -74,6 +76,7 @@ public class EntityDaoImp implements EntityDao {
 	@Override
 	public List<Object> getElementByPage(Class clazz, Page page) {
 		// TODO Auto-generated method stub
+		Session session = HibernateSessionFactory.getSession();// 获得session
 		Transaction tr = session.beginTransaction();// 开启事务
 		List<Object> list = null;
 		list = session.createQuery("from " + clazz).setFirstResult(page.getBeginIndex()).setMaxResults(page.getPageSize()).list();
@@ -84,32 +87,43 @@ public class EntityDaoImp implements EntityDao {
 	@Override
 	public Integer getTotalElementNum(Class clazz) {
 		// TODO Auto-generated method stub
+		Session session = HibernateSessionFactory.getSession();// 获得session
 		Transaction tr = session.beginTransaction();// 开启事务
-		return (Integer) session.createQuery("select count (*) from " + clazz).uniqueResult();
+		Integer count = (Integer) session.createQuery("select count (*) from " + clazz).uniqueResult();
+		return count;
 	}
 
 	@Override
 	public Object queryElementByParmaterPairs(Class clazz, String[] keys, Object[] values) {
 		// TODO Auto-generated method stub
+		Session session = HibernateSessionFactory.getSession();// 获得session
+		Transaction tr = session.beginTransaction();// 开启事务
 		Criteria criteria = session.createCriteria(clazz);
 		for (int i = 0; i < keys.length; i++) {
 			criteria.add(Restrictions.eq(keys[i], values[i]));//添加约束
 		}
-		return criteria.uniqueResult();
+		Object object = criteria.uniqueResult();
+		tr.commit();
+		return object;
 	}
 
 	@Override
 	public Object queryElementBykey(Class clazz, String key, Object value) {
 		// TODO Auto-generated method stub
+		Session session = HibernateSessionFactory.getSession();// 获得session
+		Transaction tr = session.beginTransaction();// 开启事务
 		Criteria criteria = session.createCriteria(clazz);
 		criteria.add(Restrictions.eq(key, value));//添加约束
-		return criteria.uniqueResult();
+		Object object = criteria.uniqueResult();
+		tr.commit();
+		return object;
 	}
 
 	@Override
 	public List<Object> getElementByParmaterPage(Class clazz, Page page, String key, Object value) {
 		// TODO Auto-generated method stub
-		Transaction tr = session.beginTransaction();// 开启事务
+		Session session = HibernateSessionFactory.getSession();// 获得session
+		Transaction tr = session.beginTransaction();// 开启事务		
 		Criteria criteria = session.createCriteria(clazz);
 		@SuppressWarnings("unchecked")
 		List<Object> list = criteria.add(Restrictions.eq(key, value)).setFirstResult(page.getBeginIndex()).setMaxResults(page.getPageSize()).list();
@@ -120,31 +134,32 @@ public class EntityDaoImp implements EntityDao {
 	@Override
 	public Integer getElementNumByParmater(Class clazz,String key, Object value) {
 		// TODO Auto-generated method stub
+		Session session = HibernateSessionFactory.getSession();// 获得session
 		Transaction tr = session.beginTransaction();// 开启事务
 		Criteria criteria = session.createCriteria(clazz);
-		@SuppressWarnings("unchecked")
-		List<Object> list = criteria.add(Restrictions.eq(key, value)).list();
+		Long count = (Long) criteria.add(Restrictions.eq(key, value)).setProjection(Projections.rowCount()).uniqueResult();
 		tr.commit();
-		return list.size();
+		return count.intValue(); 
 	}
 
 	@Override
 	public Integer getElementNumByParmaterPairs(Class clazz,String[] keys, Object[] values) {
 		// TODO Auto-generated method stub
+		Session session = HibernateSessionFactory.getSession();// 获得session
 		Transaction tr = session.beginTransaction();// 开启事务
 		Criteria criteria = session.createCriteria(clazz);
 		for (int i = 0; i < keys.length; i++) {
 			criteria.add(Restrictions.eq(keys[i], values[i]));//添加约束
 		}
-		@SuppressWarnings("unchecked")
-		List<Object> list = criteria.list();
+		Long count = (Long) criteria.setProjection(Projections.rowCount()).uniqueResult();
 		tr.commit();
-		return list.size();
+		return count.intValue();
 	}
 	
 	@Override
 	public List<Object> getElementByParmaterPairsPage(Class clazz, Page page, String[] keys, Object[] values) {
 		// TODO Auto-generated method stub
+		Session session = HibernateSessionFactory.getSession();// 获得session
 		Transaction tr = session.beginTransaction();// 开启事务
 		Criteria criteria = session.createCriteria(clazz);
 		for (int i = 0; i < keys.length; i++) {

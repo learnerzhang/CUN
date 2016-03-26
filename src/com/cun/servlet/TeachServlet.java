@@ -52,7 +52,7 @@ public class TeachServlet extends HttpServlet {
 					List<Object> teachs = service.getAllUser(page, type);
 					request.setAttribute("teachs", teachs);
 					request.setAttribute("page", page);
-					request.getRequestDispatcher("WEB-INF/teach.jsp").forward(request, response);
+					request.getRequestDispatcher("WEB-INF/sys/teach.jsp").forward(request, response);
 					return;
 				} else if (ptype.equals("add")) {
 					response.setContentType("text/plain;charset=utf-8");

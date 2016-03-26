@@ -7,16 +7,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>管理员管理-有点</title>
 <link rel="stylesheet" type="text/css" href="css/css.css" />
+<link rel="stylesheet" type="text/css" href="css/reset.css" />
+<link rel="stylesheet" type="text/css" href="css/pagination.css" />
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/md5.js"></script>
 <script type="text/javascript" src="js/jquery.json-2.4.js"></script>
+<script type="text/javascript" src="js/jquery.pagination.js"></script>
 <!-- <script type="text/javascript" src="js/page.js" ></script> -->
 <script type="text/javascript">
 
 	function changeStatus(id){
 		$.ajax({
 			contentType: "application/json;charset=utf-8",
-			url : "AdminServlet?type=status&id="+id,
+			url : "TeachServlet?type=status&id="+id,
 			type : "post",
 			dataType : "json",
 			success : function(data) {
@@ -34,8 +37,16 @@
 			}
 		});	
 	}
+	function PageCallback(index) { 
+		window.location.href="TeachServlet?type=list&page="+(index+1);
+    }
 	$(function() {
 		var id = 0;
+		$("#Pagination").pagination("${page.totalPage }",{
+			current_page:"${page.currentPage-1}",
+			callback: PageCallback
+		});
+		
 		//广告弹出框
 		$(".delban").click(function(){
 		  	id = $(this).attr("id");
@@ -52,7 +63,7 @@
 		  	$(".banDel").hide();
 		  	$.ajax({
 				type:"post",
-				url:"AdminServlet?type=del&id="+id,
+				url:"TeachServlet?type=del&id="+id,
 				dataType: "json",
 				success:function(data){
 					if (data.hasOwnProperty("code")) {
@@ -88,7 +99,7 @@
 			$.ajax({
 				contentType:"application/json;charset=utf-8",
 				type:"post",
-				url:"AdminServlet?type=add",
+				url:"TeachServlet?type=add",
 				data : JSON.stringify(paratmeter),
 				dataType: "json",
 				success:function(data){
@@ -113,7 +124,7 @@
 	<div id="pageAll">
 		<div class="pageTop">
 			<div class="page">
-				<img src="img/coin02.png" /><span><a href="#">首页</a>&nbsp;-&nbsp;<a href="#">网站管理</a>&nbsp;-</span>&nbsp;管理员管理
+				<img src="img/coin02.png" /><span><a href="#">首页</a>&nbsp;-&nbsp;<a href="#">网站管理</a>&nbsp;-</span>&nbsp;教师组管理
 			</div>
 		</div>
 
@@ -140,28 +151,35 @@
 							<td width="130px" class="tdColor">状态</td>
 							<td width="130px" class="tdColor">操作</td>
 						</tr>
-						<c:forEach items="${admins }" var="admin" varStatus="status">
+						<c:forEach items="${teachs }" var="teach" varStatus="status">
 							<tr height="40px">
 								<td>${status.index+1+page.beginIndex }</td>
-								<td>${admin.type }</td>
-								<td>${admin.username }</td>
-								<td>${fn:split(admin.createtime,".")[0] }</td>
+								<td>${teach.type }</td>
+								<td>${teach.username }</td>
+								<td>${fn:split(teach.createtime,".")[0] }</td>
 								<td>
 									<c:choose>
-											<c:when test="${admin.status=='yes' }">
-												<input id="button${admin.id }" onclick="changeStatus(${admin.id })" style="background-color:#C5E211;width:80px;color: #fff" type="button" value="${admin.status }"/>
+											<c:when test="${teach.status=='yes' }">
+												<input id="button${teach.id }" onclick="changeStatus(${teach.id })" style="background-color:#C5E211;width:80px;color: #fff" type="button" value="${teach.status }"/>
 											</c:when>
 											<c:otherwise>
-												<input id="button${admin.id }" onclick="changeStatus(${admin.id })" style="background-color:rgba(165, 168, 60, 0.74);width:80px;color: #fff" type="button" value="${admin.status }"/>
+												<input id="button${teach.id }" onclick="changeStatus(${teach.id })" style="background-color:rgba(165, 168, 60, 0.74);width:80px;color: #fff" type="button" value="${teach.status }"/>
 											</c:otherwise>
 										</c:choose>
 								</td>
-								<td><img id="${admin.id }" class="operation delban" src="img/delete.png"></td>
+								<td><img id="${teach.id }" class="operation delban" src="img/delete.png"></td>
 							</tr>
 						</c:forEach>
 						
 					</table>
-					<div class="paging">此处是分页</div>
+					<div class="pages">
+						<div id="Pagination" style="float: right;"></div>
+				        <%-- <div class="searchPage" style="float: right;">
+				        	<span class="page-sum">共<strong class="allPage">${page.totalPage }</strong>页</span>
+				          	<span class="page-go">跳转<input type="text">页</span>
+				        	<a href="javascript:;" class="page-btn">GO</a>
+				        </div> --%>
+					</div>
 				</div>
 				<!-- user 表格 显示 end-->
 			</div>

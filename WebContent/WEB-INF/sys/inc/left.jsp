@@ -70,22 +70,29 @@ $(function(){
 			<dl class="system_log">
 				<dt>
 					<img class="icon1" src="img/coin05.png" /><img class="icon2"
-						src="img/coin06.png" /> 资源管理<img class="icon3"
+						src="img/coin06.png" /> 语料管理<img class="icon3"
 						src="img/coin19.png" /><img class="icon4"
 						src="img/coin20.png" />
 				</dt>
 				<dd>
-					<img class="coin11" src="img/coin111.png" /><img class="coin22"
-						src="img/coin222.png" /><a class="cks" href="banner"
-						target="main">语料管理</a><img class="icon5" src="img/coin21.png" />
+					<img class="coin11" src="img/coin111.png" /><img class="coin22" src="img/coin222.png" /><a class="cks" href="TendencyServlet?type=list&flag_tendency=0&page=1"
+						target="main">情感未标记</a><img class="icon5" src="img/coin21.png" />
 				</dd>
 				<dd>
-					<img class="coin11" src="img/coin111.png" /><img class="coin22"
-						src="img/coin222.png" /><a class="cks" href="banner"
-						target="main">广告管理</a><img class="icon5" src="img/coin21.png" />
+					<img class="coin11" src="img/coin111.png" /><img class="coin22" src="img/coin222.png" /><a class="cks" href="TendencyServlet?type=list&flag_tendency=1&page=1"
+						target="main">情感已标记</a><img class="icon5" src="img/coin21.png" />
 				</dd>
 				<dd>
-					<img class="coin11" src="img/coin111.png" /><img class="coin22" src="img/coin222.png" /><a class="cks" href="opinion" target="main">意见管理</a><img class="icon5" src="img/coin21.png" />
+					<img class="coin11" src="img/coin111.png" /><img class="coin22" src="img/coin222.png" /><a class="cks" href="FeatureServlet?type=list&flag_feature=0&page=1"
+						target="main">特征未标记</a><img class="icon5" src="img/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/coin111.png" /><img class="coin22" src="img/coin222.png" /><a class="cks" href="FeatureServlet?type=list&flag_feature=1&page=1"
+						target="main">特征已标记</a><img class="icon5" src="img/coin21.png" />
+				</dd>
+				<dd>
+					<img class="coin11" src="img/coin111.png" /><img class="coin22" src="img/coin222.png" />
+					<a class="cks" href="opinion" target="main">具体详情</a><img class="icon5" src="img/coin21.png" />
 				</dd>
 			</dl>
 			<dl class="system_log">

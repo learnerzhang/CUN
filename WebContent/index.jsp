@@ -8,7 +8,7 @@
 <%
 	User user = (User)session.getAttribute("user");
 	if(user==null){
-		request.getRequestDispatcher("WEB-INF/login.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/sys/login.jsp").forward(request, response);
 	}
 %>
 </head>

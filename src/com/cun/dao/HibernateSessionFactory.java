@@ -22,7 +22,7 @@ public class HibernateSessionFactory {
 		try {
 			if (session == null || session.isOpen() == false)
 				session = null;
-			session = sf.openSession();
+			session = sf.getCurrentSession();
 		} catch (HibernateException e) {
 			throw new RuntimeException("Create Session Fail", e);
 		}

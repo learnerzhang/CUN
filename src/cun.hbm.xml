@@ -5,16 +5,32 @@
 
 <hibernate-mapping>
 	<class name="com.cun.model.User" table="user">
-		<id name="id" column="id">
+		<id name="id" column="id" type="java.lang.Integer">
 			<generator class="increment" />
 		</id>
-		<property name="username" column="username" />
-		<property name="password" column="password" />
-		<property name="sex" column="sex" />
-		<property name="phone" column="phone" />
-		<property name="email" column="email" />
-		<property name="type" column="type" />
-		<property name="status" column="status" />
-		<property name="createtime" column="createtime" />
+		<property name="username" column="username" type="java.lang.String" length="20" not-null="true" update="false"/>
+		<property name="password" column="password" type="java.lang.String" length="50" not-null="true"/>
+		<property name="sex" column="sex" type="java.lang.String" length="1"/>
+		<property name="phone" column="phone" type="java.lang.String" length="11"/>
+		<property name="email" column="email" type="java.lang.String"/>
+		<property name="type" column="type" type="java.lang.String" length="1" not-null="true"/>
+		<property name="status" column="status" type="java.lang.String" length="3" not-null="true"/>
+		<property name="createtime" column="createtime" type="java.sql.Timestamp" not-null="true"/>
 	</class>
+	
+	<class name="com.cun.model.Corpus" table="corpus" dynamic-insert="true" dynamic-update="true">
+		<id name="id" column="id" type="java.lang.Integer">
+			<generator class="increment"></generator>
+		</id>
+		<property name="context" type="java.lang.String" not-null="true"/>
+		<property name="addition" type="java.lang.String"/>
+		<property name="tagging" type="java.lang.String"/>
+		<property name="label" type="java.lang.String"/>
+		<property name="tendency" type="java.lang.String" length="1"/><!-- 0->消极 1->中性 2->积极-->
+		<property name="flag_tendency" type="java.lang.String" length="1" not-null="true" /><!-- 0未标记   1已标记 -->
+		<property name="feature" type="java.lang.String"/>
+		<property name="flag_feature" type="java.lang.String" length="1" not-null="true" /><!--特征  0未标记   1已标记 -->
+		
+	</class>
+	
 </hibernate-mapping>

@@ -85,7 +85,7 @@
 
 	<!-- 登录页面头部 -->
 	<div class="logHead">
-		<img src="img/logLOGO.png" />
+		<img src="img/logo.png" height="76px"/>
 	</div>
 	<!-- 登录页面头部结束 -->
 

@@ -53,7 +53,7 @@ public class AdminServlet extends HttpServlet {
 			List<Object> admins = service.getAllUser(page, type);
 			request.setAttribute("admins", admins);
 			request.setAttribute("page", page);
-			request.getRequestDispatcher("WEB-INF/admin.jsp").forward(request, response);
+			request.getRequestDispatcher("WEB-INF/sys/admin.jsp").forward(request, response);
 			return;
 		}else if (ptype.equals("add")){
 			response.setContentType("text/plain;charset=utf-8");
