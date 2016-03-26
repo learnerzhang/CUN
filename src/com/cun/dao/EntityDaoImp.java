@@ -78,8 +78,8 @@ public class EntityDaoImp implements EntityDao {
 		// TODO Auto-generated method stub
 		Session session = HibernateSessionFactory.getSession();// 获得session
 		Transaction tr = session.beginTransaction();// 开启事务
-		List<Object> list = null;
-		list = session.createQuery("from " + clazz).setFirstResult(page.getBeginIndex()).setMaxResults(page.getPageSize()).list();
+		Criteria criteria = session.createCriteria(clazz);
+		List<Object> list = criteria.setFirstResult(page.getBeginIndex()).setMaxResults(page.getPageSize()).list();
 		tr.commit();
 		return list;
 	}
@@ -89,8 +89,10 @@ public class EntityDaoImp implements EntityDao {
 		// TODO Auto-generated method stub
 		Session session = HibernateSessionFactory.getSession();// 获得session
 		Transaction tr = session.beginTransaction();// 开启事务
-		Integer count = (Integer) session.createQuery("select count (*) from " + clazz).uniqueResult();
-		return count;
+		Criteria criteria = session.createCriteria(clazz);
+		Long count = (Long) criteria.setProjection(Projections.rowCount()).uniqueResult();
+		tr.commit();
+		return count.intValue();
 	}
 
 	@Override

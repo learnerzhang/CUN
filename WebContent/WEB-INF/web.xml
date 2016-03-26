@@ -79,9 +79,6 @@
     <servlet-name>useropinion</servlet-name>
     <url-pattern>/useropinion</url-pattern>
   </servlet-mapping>
-  
-  
-  
   <servlet>
     <display-name>user-connoisseuradd</display-name>
     <servlet-name>connoisseuradd</servlet-name>
@@ -300,5 +297,15 @@
   <servlet-mapping>
     <servlet-name>MarkDataServlet</servlet-name>
     <url-pattern>/MarkDataServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>OpinionServlet</display-name>
+    <servlet-name>OpinionServlet</servlet-name>
+    <servlet-class>com.cun.servlet.OpinionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OpinionServlet</servlet-name>
+    <url-pattern>/OpinionServlet</url-pattern>
   </servlet-mapping>
 </web-app>

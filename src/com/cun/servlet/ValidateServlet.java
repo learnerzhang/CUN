@@ -56,7 +56,7 @@ public class ValidateServlet extends HttpServlet {
 		String captcha = (String) session.getAttribute("captcha");
 		if (!StringUtil.equalWithcode(captcha, vcode)) {
 			log.info("验证码错误....");
-			jsonObject.put("code", "1");
+			object.put("code", "1");
 		}else {
 			String username = (String) jsonObject.get("username");
 			String password = (String) jsonObject.get("password");
@@ -69,7 +69,6 @@ public class ValidateServlet extends HttpServlet {
 				User u = service.getUserInfo(user);
 				HttpSession httpSession = request.getSession();
 				httpSession.setAttribute("user", u);
-				
 				object.put("code", "0");//ok
 			}else if (rs==2) {
 				object.put("code", "2");//no username

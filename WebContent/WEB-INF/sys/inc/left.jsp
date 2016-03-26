@@ -1,4 +1,6 @@
 <%@page contentType="text/html;charset=utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -45,6 +47,7 @@ $(function(){
 			<dt><img class="icon1" src="../img/coin01.png" /><img class="icon2"src="../img/coin02.png" />
 				首页<img class="icon3" src="../img/coin19.png" /><img class="icon4" src="../img/coin20.png" /></dt>
 		</dl> -->
+		<c:if test="${user.type eq '0' }">
 			<dl class="system_log">
 				<dt>
 					<img class="icon1" src="img/coin03.png" /><img class="icon2"
@@ -69,7 +72,7 @@ $(function(){
 				</dd>
 				<dd>
 					<img class="coin11" src="img/coin111.png" /><img class="coin22"
-						src="img/coin222.png" /><a href="opinion" target="main"
+						src="img/coin222.png" /><a href="OpinionServlet?type=list&page=1" target="main"
 						class="cks">相关建议</a><img class="icon5" src="img/coin21.png" />
 				</dd>
 			</dl>
@@ -98,9 +101,10 @@ $(function(){
 				</dd>
 				<dd>
 					<img class="coin11" src="img/coin111.png" /><img class="coin22" src="img/coin222.png" />
-					<a class="cks" href="MarkDataServlet?type=all" target="main">标记详情</a><img class="icon5" src="img/coin21.png" />
+					<a class="cks" href="MarkDataServlet?type=all&page=1" target="main">标记详情</a><img class="icon5" src="img/coin21.png" />
 				</dd>
 			</dl>
+		</c:if>
 			<!-- <dl class="system_log">
 				<dt>
 					<img class="icon1" src="img/coin07.png" /><img class="icon2"
@@ -138,7 +142,7 @@ $(function(){
 				</dt>
 				<dd>
 					<img class="coin11" src="img/coin111.png" /><img class="coin22"
-						src="img/coin222.png" /><a href="MarkTendencyServlet" target="main"
+						src="img/coin222.png" /><a href="MarkTendencyServlet?type=load" target="main"
 						class="cks">开始标记</a><img class="icon5" src="img/coin21.png" />
 				</dd>
 			</dl>
@@ -164,12 +168,12 @@ $(function(){
 				</dt>
 				<dd>
 					<img class="coin11" src="img/coin111.png" /><img class="coin22"
-						src="img/coin222.png" /><a href="MarkDataServlet?type=info" target="main"
+						src="img/coin222.png" /><a href="MarkDataServlet?type=info&page=1" target="main"
 						class="cks">个人数据</a><img class="icon5" src="img/coin21.png" />
 				</dd>
 				<dd>
 					<img class="coin11" src="img/coin111.png" /><img class="coin22"
-						src="img/coin222.png" /><a href="MarkDataServlet?type=other" target="main"
+						src="img/coin222.png" /><a href="MarkDataServlet?type=other&page=1" target="main"
 						class="cks">对比数据</a><img class="icon5" src="img/coin21.png" />
 				</dd>
 				<dd>

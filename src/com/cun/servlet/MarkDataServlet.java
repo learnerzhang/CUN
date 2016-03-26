@@ -1,10 +1,19 @@
 package com.cun.servlet;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.cun.model.Corpus;
+import com.cun.model.Page;
+import com.cun.model.User;
+import com.cun.service.CorpusService;
+import com.cun.util.PageUtil;
 
 /**
  * Servlet implementation class MarkDataServlet
@@ -28,7 +37,23 @@ public class MarkDataServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		String type = request.getParameter("type");
 		if (type.equals("info")) {
-			response.getWriter().append("Served at: ").append(request.getContextPath()+" info");
+			HttpSession session = request.getSession();
+			User user = (User) session.getAttribute("user");
+			if (user==null) {
+				request.getRequestDispatcher("WEB-INF/sys/login.jsp").forward(request, response);
+			}
+			String username = user.getUsername();
+			CorpusService service = new CorpusService();
+			String p = request.getParameter("page");
+			Integer totalCount = service.getAllTendencyUserCorpusNum(username, "1");
+			Page page = PageUtil.createPage(10, totalCount, Integer.valueOf(p));
+			
+			List<Object> corpus = service.getAllTendencyUserCorpus(page, username, "1");
+			request.setAttribute("page", page);
+			request.setAttribute("corpus", corpus);
+			request.getRequestDispatcher("WEB-INF/sys/user_data.jsp").forward(request, response);
+			return;
+			
 		}else if (type.equals("other")) {
 			response.getWriter().append("Served at: ").append(request.getContextPath()+" other");
 		}else if (type.equals("all")) {

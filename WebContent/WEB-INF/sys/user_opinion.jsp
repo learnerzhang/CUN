@@ -5,22 +5,31 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="css/css.css" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.json-2.4.js"></script>
 <script type="text/javascript">
 $(function(){
 	$(".btn_yes").click(function(){
-		if ($("#opinion").val().trim()=="") {
+		
+		if ($("#context").val().trim()=="") {
 			return;
 		}
-		
+		var paratmeter = {
+			"username" : "${user.username}",
+			"context" : $("#context").val()
+		};
 		$.ajax({
 			contentType:"application/json;charset=utf-8",
-			url : "",
-			type : "get",
+			url : "OpinionServlet?type=add",
+			type : "post",
 			dataType : "json",
+			data : JSON.stringify(paratmeter),
 			success : function(data) {
 				if (data.hasOwnProperty("code")) {
 					if (data.code == "0") {
-						window.location.reload();//登录成功.跳转首页...
+						window.parent.location.reload();//登录成功.跳转首页...
+					}else {
+						alert("网络异常...");
 					} 
 				}
 			},
@@ -37,7 +46,8 @@ $(function(){
 	<div id="pageAll">
 		<div class="pageTop">
 			<div class="page">
-				<img src="img/coin02.png" /><span><a href="#">首页</a>&nbsp;-&nbsp;<a href="#">工作内容</a>&nbsp;-</span>&nbsp;反馈建议
+				<img src="img/coin02.png" /><span><a href="#">首页</a>&nbsp;-&nbsp;<a
+					href="#">工作内容</a>&nbsp;-</span>&nbsp;反馈建议
 			</div>
 		</div>
 		<div class="page">
@@ -47,7 +57,7 @@ $(function(){
 				<div class="opShow">
 					<div class="bbD">
 						<div class="btext2" style="margin-left:20px;">
-							<textarea class="text2" id="opinion"></textarea>
+							<textarea class="text2" id="context" name="context"></textarea>
 						</div>
 					</div>
 					<div class="bbD">

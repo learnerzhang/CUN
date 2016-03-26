@@ -1,11 +1,13 @@
 package com.cun.model;
 
 import java.io.Serializable;
-
+import java.sql.Timestamp;
 @SuppressWarnings("serial")
 public class Corpus implements Serializable{
 
 	private Integer id;
+	private String username;
+	private Timestamp timestamp;
 	private String context;
 	private String addition;
 	private String tagging;
@@ -19,6 +21,18 @@ public class Corpus implements Serializable{
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public Timestamp getTimestamp() {
+		return timestamp;
+	}
+	public void setTimestamp(Timestamp timestamp) {
+		this.timestamp = timestamp;
 	}
 	public String getContext() {
 		return context;

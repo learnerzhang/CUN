@@ -22,15 +22,24 @@
 		<id name="id" column="id" type="java.lang.Integer">
 			<generator class="increment"></generator>
 		</id>
-		<property name="context" type="java.lang.String" not-null="true"/>
-		<property name="addition" type="java.lang.String"/>
-		<property name="tagging" type="java.lang.String"/>
-		<property name="label" type="java.lang.String"/>
-		<property name="tendency" type="java.lang.String" length="1"/><!-- 0->消极 1->中性 2->积极-->
-		<property name="flag_tendency" type="java.lang.String" length="1" not-null="true" /><!-- 0未标记   1已标记 -->
-		<property name="feature" type="java.lang.String"/>
-		<property name="flag_feature" type="java.lang.String" length="1" not-null="true" /><!--特征  0未标记   1已标记 -->
-		
+		<property name="username" column="username" type="java.lang.String"/>
+		<property name="timestamp" column="timestamp" type="java.sql.Timestamp"/>
+		<property name="context" column="context" type="java.lang.String" not-null="true"/>
+		<property name="addition" column="addition" type="java.lang.String"/>
+		<property name="tagging" column="tagging" type="java.lang.String"/>
+		<property name="label" column="label" type="java.lang.String"/>
+		<property name="tendency" column="tendency" type="java.lang.String" length="1"/><!-- 0->消极 1->中性 2->积极-->
+		<property name="flag_tendency" column="flag_tendency" type="java.lang.String" length="1" not-null="true" /><!-- 0未标记   1已标记 -->
+		<property name="feature" column="feature" type="java.lang.String"/>
+		<property name="flag_feature" column="flag_feature" type="java.lang.String" length="1" not-null="true" /><!--特征  0未标记   1已标记 -->
 	</class>
 	
+	<class name="com.cun.model.Opinion" table="opinion">
+        <id name="id" column="id" type="java.lang.Integer">
+            <generator class="increment" />
+        </id>
+        <property name="username" column="username" type="java.lang.String"/>
+        <property name="context" column="context" type="java.lang.String"/>
+        <property name="timestamp" column="timestamp" type="java.sql.Timestamp"/>
+    </class>
 </hibernate-mapping>
