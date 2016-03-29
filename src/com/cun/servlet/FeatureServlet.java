@@ -44,6 +44,7 @@ public class FeatureServlet extends HttpServlet {
 			Integer totalCount = service.getAllFeatureCorpusNum(flag_feature);
 			Page page = PageUtil.createPage(10, totalCount, Integer.valueOf(p));
 			List<Object> corpus = service.getAllFeatureCorpus(page, flag_feature);
+			request.setAttribute("flag_feature",flag_feature);
 			request.setAttribute("corpus",corpus);
 			request.setAttribute("page",page);
 			request.getRequestDispatcher("WEB-INF/sys/corpus_feature.jsp").forward(request, response);;

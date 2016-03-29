@@ -55,7 +55,7 @@ public class UserService {
 	}
 	
 	public List<Object> getAllUser(Page page,String type){
-		return entityDao.getElementByParmaterPage(User.class, page, "type", type);
+		return entityDao.getElementByParmaterPage(User.class, page, "type", type,"createtime");
 	}
 	
 	public Integer getAllUserNum(String type){

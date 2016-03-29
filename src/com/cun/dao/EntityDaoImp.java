@@ -5,6 +5,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
@@ -51,12 +52,17 @@ public class EntityDaoImp implements EntityDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Object> queryAllElement(Class clazz) {
+	public List<Object> queryAllElement(Class clazz,String order) {
 		// TODO Auto-generated method stub
 		Session session = HibernateSessionFactory.getSession();// 获得session
 		Transaction tr = session.beginTransaction();// 开启事务
-		List<Object> list = null;
-		list = session.createQuery("from " + clazz).list();
+		Criteria criteria = session.createCriteria(clazz);
+		List<Object> list = criteria.addOrder(Order.desc(order)).list();
+		if (order==null) {
+			list = criteria.list();
+		}else {
+			list = criteria.addOrder(Order.desc(order)).list();
+		}
 		tr.commit();
 		return list;
 	}
@@ -74,12 +80,17 @@ public class EntityDaoImp implements EntityDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Object> getElementByPage(Class clazz, Page page) {
+	public List<Object> getElementByPage(Class clazz, Page page,String order) {
 		// TODO Auto-generated method stub
 		Session session = HibernateSessionFactory.getSession();// 获得session
 		Transaction tr = session.beginTransaction();// 开启事务
 		Criteria criteria = session.createCriteria(clazz);
-		List<Object> list = criteria.setFirstResult(page.getBeginIndex()).setMaxResults(page.getPageSize()).list();
+		List<Object> list = null;
+		if (order!=null) {
+			list = criteria.addOrder(Order.desc(order)).setFirstResult(page.getBeginIndex()).setMaxResults(page.getPageSize()).list();
+		}else {
+			list = criteria.setFirstResult(page.getBeginIndex()).setMaxResults(page.getPageSize()).list();
+		}
 		tr.commit();
 		return list;
 	}
@@ -121,14 +132,20 @@ public class EntityDaoImp implements EntityDao {
 		return object;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<Object> getElementByParmaterPage(Class clazz, Page page, String key, Object value) {
+	public List<Object> getElementByParmaterPage(Class clazz, Page page, String key, Object value,String order) {
 		// TODO Auto-generated method stub
 		Session session = HibernateSessionFactory.getSession();// 获得session
 		Transaction tr = session.beginTransaction();// 开启事务		
 		Criteria criteria = session.createCriteria(clazz);
-		@SuppressWarnings("unchecked")
-		List<Object> list = criteria.add(Restrictions.eq(key, value)).setFirstResult(page.getBeginIndex()).setMaxResults(page.getPageSize()).list();
+		List<Object> list = null;
+		if(order==null){
+			list = criteria.add(Restrictions.eq(key, value)).setFirstResult(page.getBeginIndex()).setMaxResults(page.getPageSize()).list();
+		}else {
+			list = criteria.add(Restrictions.eq(key, value)).addOrder(Order.desc(order)).setFirstResult(page.getBeginIndex()).setMaxResults(page.getPageSize()).list();
+		}
+		
 		tr.commit();
 		return list;
 	}
@@ -158,8 +175,9 @@ public class EntityDaoImp implements EntityDao {
 		return count.intValue();
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<Object> getElementByParmaterPairsPage(Class clazz, Page page, String[] keys, Object[] values) {
+	public List<Object> getElementByParmaterPairsPage(Class clazz, Page page, String[] keys, Object[] values,String order) {
 		// TODO Auto-generated method stub
 		Session session = HibernateSessionFactory.getSession();// 获得session
 		Transaction tr = session.beginTransaction();// 开启事务
@@ -167,8 +185,12 @@ public class EntityDaoImp implements EntityDao {
 		for (int i = 0; i < keys.length; i++) {
 			criteria.add(Restrictions.eq(keys[i], values[i]));//添加约束
 		}
-		@SuppressWarnings("unchecked")
-		List<Object> list = criteria.setFirstResult(page.getBeginIndex()).setMaxResults(page.getPageSize()).list();
+		List<Object> list = null;
+		if (order==null) {
+			list = criteria.setFirstResult(page.getBeginIndex()).setMaxResults(page.getPageSize()).list();
+		}else {
+			list = criteria.addOrder(Order.desc(order)).setFirstResult(page.getBeginIndex()).setMaxResults(page.getPageSize()).list();
+		}
 		tr.commit();
 		return list;
 	}

@@ -11,7 +11,7 @@
 			com.mysql.jdbc.Driver<!-- 这里是Oracle 9i的JDBC driver class名 -->
 		</property>
 		<property name="connection.url">
-			jdbc:mysql://127.0.0.1:3306/cun<!-- 这里是Oracle的hibernate_test数据库URL -->
+			jdbc:mysql://127.0.0.1:3306/cun?useUnicode=true&amp;characterEncoding=UTF-8
 		</property>
 		<property name="connection.username">
 			root

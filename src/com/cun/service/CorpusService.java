@@ -34,21 +34,21 @@ public class CorpusService {
 	}
 	
 	public List<Object> getAllTendencyUserCorpus(Page page,String username,String flag_tendency){
-		return entityDao.getElementByParmaterPairsPage(Corpus.class, page, new String[]{"username","flag_tendency"}, new String[]{username,flag_tendency});
+		return entityDao.getElementByParmaterPairsPage(Corpus.class, page, new String[]{"username","flag_tendency"}, new String[]{username,flag_tendency},"timestamp");
 	}
 	public Integer getAllTendencyUserCorpusNum(String username,String flag_tendency){
 		return entityDao.getElementNumByParmaterPairs(Corpus.class, new String[]{"username","flag_tendency"}, new String[]{username,flag_tendency});
 	}
 	
 	public List<Object> getAllTendencyCorpus(Page page,String flag_tendency){
-		return entityDao.getElementByParmaterPage(Corpus.class, page, "flag_tendency", flag_tendency);
+		return entityDao.getElementByParmaterPage(Corpus.class, page, "flag_tendency", flag_tendency,"timestamp");
 	}
 	public Integer getAllTendencyCorpusNum(String flag_tendency){
 		return entityDao.getElementNumByParmater(Corpus.class, "flag_tendency",flag_tendency);
 	}
 	
 	public List<Object> getAllFeatureCorpus(Page page,String flag_feature){
-		return entityDao.getElementByParmaterPage(Corpus.class, page, "flag_feature", flag_feature);
+		return entityDao.getElementByParmaterPage(Corpus.class, page, "flag_feature", flag_feature,"timestamp");
 	}
 	public Integer getAllFeatureCorpusNum(String flag_feature){
 		return entityDao.getElementNumByParmater(Corpus.class, "flag_feature",flag_feature);

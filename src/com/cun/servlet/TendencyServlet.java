@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.cun.model.Corpus;
 import com.cun.model.Page;
 import com.cun.service.CorpusService;
 import com.cun.util.PageUtil;
@@ -44,6 +45,8 @@ public class TendencyServlet extends HttpServlet {
 			Integer totalCount = service.getAllTendencyCorpusNum(flag_tendency);
 			Page page = PageUtil.createPage(10, totalCount, Integer.valueOf(p));
 			List<Object> corpus = service.getAllTendencyCorpus(page, flag_tendency);
+			
+			request.setAttribute("flag_tendency",flag_tendency);
 			request.setAttribute("corpus",corpus);
 			request.setAttribute("page", page);
 			request.getRequestDispatcher("WEB-INF/sys/corpus_tendency.jsp").forward(request, response);

@@ -36,6 +36,8 @@ public class MarkDataServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		String type = request.getParameter("type");
+		CorpusService service = new CorpusService();
+		
 		if (type.equals("info")) {
 			HttpSession session = request.getSession();
 			User user = (User) session.getAttribute("user");
@@ -43,17 +45,22 @@ public class MarkDataServlet extends HttpServlet {
 				request.getRequestDispatcher("WEB-INF/sys/login.jsp").forward(request, response);
 			}
 			String username = user.getUsername();
-			CorpusService service = new CorpusService();
 			String p = request.getParameter("page");
 			Integer totalCount = service.getAllTendencyUserCorpusNum(username, "1");
 			Page page = PageUtil.createPage(10, totalCount, Integer.valueOf(p));
-			
 			List<Object> corpus = service.getAllTendencyUserCorpus(page, username, "1");
+			
 			request.setAttribute("page", page);
 			request.setAttribute("corpus", corpus);
 			request.getRequestDispatcher("WEB-INF/sys/user_data.jsp").forward(request, response);
 			return;
-			
+		}else if (type.equals("load")) {
+			String id = request.getParameter("id");
+			String page = request.getParameter("page");
+			Corpus corpus = service.getCorpusById(id);
+			request.setAttribute("page", page);
+			request.setAttribute("corpus", corpus);
+			request.getRequestDispatcher("WEB-INF/sys/corpus_update.jsp").forward(request, response);
 		}else if (type.equals("other")) {
 			response.getWriter().append("Served at: ").append(request.getContextPath()+" other");
 		}else if (type.equals("all")) {

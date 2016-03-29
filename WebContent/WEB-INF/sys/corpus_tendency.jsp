@@ -15,7 +15,7 @@
 	
 	function PageCallback(index) { 
 		//TendencyServlet?type=list&flag_tendency=0&page=1
-		window.location.href="TendencyServlet?type=list&flag_tendency=0&page="+(index+1);
+		window.location.href="TendencyServlet?type=list&flag_tendency=${flag_tendency}&page="+(index+1);
 	}
 	$(document).ready(function() {
 		$("#Pagination").pagination("${page.totalPage }",{

@@ -16,7 +16,7 @@
 <script type="text/javascript">
 	function PageCallback(index) { 
 		//TendencyServlet?type=list&flag_tendency=0&page=1
-		window.location.href="FeatureServlet?type=list&flag_feature=0&page="+(index+1);
+		window.location.href="FeatureServlet?type=list&flag_feature=${flag_feature}&page="+(index+1);
 	}
 	$(document).ready(function() {
 		$("#Pagination").pagination("${page.totalPage }",{
