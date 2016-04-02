@@ -82,4 +82,11 @@ public class Corpus implements Serializable{
 	public void setFeature(String feature) {
 		this.feature = feature;
 	}
+	@Override
+	public String toString() {
+		return "Corpus [id=" + id + ", username=" + username + ", timestamp=" + timestamp + ", context=" + context
+				+ ", addition=" + addition + ", tagging=" + tagging + ", label=" + label + ", tendency=" + tendency
+				+ ", flag_tendency=" + flag_tendency + ", flag_feature=" + flag_feature + ", feature=" + feature + "]";
+	}
+	
 }

@@ -1,6 +1,7 @@
 package com.cun.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -14,6 +15,8 @@ import com.cun.model.Page;
 import com.cun.model.User;
 import com.cun.service.CorpusService;
 import com.cun.util.PageUtil;
+
+import net.sf.json.JSONObject;
 
 /**
  * Servlet implementation class MarkDataServlet
@@ -61,6 +64,23 @@ public class MarkDataServlet extends HttpServlet {
 			request.setAttribute("page", page);
 			request.setAttribute("corpus", corpus);
 			request.getRequestDispatcher("WEB-INF/sys/corpus_update.jsp").forward(request, response);
+		}else if (type.equals("reset")) {
+			String id = request.getParameter("id");
+			Corpus corpus = service.getCorpusById(id);
+			System.out.println(corpus);
+			response.setContentType("text/plain;charset=utf-8");
+			PrintWriter out = response.getWriter();
+			JSONObject object = new JSONObject();
+			corpus.setFlag_tendency("0");
+			try {
+				service.updateCorpus(corpus);
+				object.put("code", "0");
+			} catch (Exception e) {
+				// TODO: handle exception
+				object.put("code", "1");
+			}
+			out.write(object.toString());
+			return;
 		}else if (type.equals("other")) {
 			response.getWriter().append("Served at: ").append(request.getContextPath()+" other");
 		}else if (type.equals("all")) {

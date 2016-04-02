@@ -144,17 +144,25 @@
 					<table border="1" cellspacing="0" cellpadding="0">
 						<tr>
 							<td width="66px" class="tdColor tdC">序号</td>
-							<td width="400px" class="tdColor">权限级别</td>
-							<td width="400px" class="tdColor">用户名</td>
-							<td width="630px" class="tdColor">添加时间</td>
+							<!-- <td width="80px" class="tdColor">权限</td> -->
+							<td width="200px" class="tdColor">用户名</td>
+							<td width="180px" class="tdColor">姓名</td>
+							<td width="300px" class="tdColor">银行卡号</td>
+							<td width="200px" class="tdColor">手机号</td>
+							<td width="230px" class="tdColor">邮箱</td>
+							<td width="330px" class="tdColor">添加时间</td>
 							<td width="130px" class="tdColor">状态</td>
 							<td width="130px" class="tdColor">操作</td>
 						</tr>
 						<c:forEach items="${stus }" var="stu" varStatus="status">
 							<tr height="40px">
 								<td>${status.index+1+page.beginIndex }</td>
-								<td>${stu.type }</td>
+								<%-- <td>${stu.type }</td> --%>
 								<td>${stu.username }</td>
+								<td>${stu.name }</td>
+								<td>${stu.bcid }</td>
+								<td>${stu.phone }</td>
+								<td>${stu.email }</td>
 								<td>${fn:split(stu.createtime,".")[0] }</td>
 								<td>
 									<c:choose>

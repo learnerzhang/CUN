@@ -78,13 +78,17 @@ public class UserServlet extends HttpServlet {
 			PrintWriter out = response.getWriter();
 			String uString = IOUtil.readJSONString(request);
 			JSONObject jsonObject = JSONObject.fromObject(uString);
-			
+			System.out.println(jsonObject);
 			String id = jsonObject.getString("id");
 			String phone = jsonObject.getString("phone");
 			String email = jsonObject.getString("email");
 			String sex = jsonObject.getString("sex");
-			
+			String name = jsonObject.getString("name");
 			User user = service.getUserById(id);
+			if (user.getType().equals("2")) {
+				user.setBcid(jsonObject.getString("bcid"));
+			}
+			user.setName(name);
 			user.setPhone(phone);
 			user.setSex(sex);
 			user.setEmail(email);

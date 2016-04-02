@@ -37,7 +37,6 @@ public class EntityDaoImp implements EntityDao {
 		Session session = HibernateSessionFactory.getSession();// 获得session
 		Transaction tr = session.beginTransaction();// 开启事务
 		session.update(object);
-		session.flush();
 		tr.commit();
 	}
 

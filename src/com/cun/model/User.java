@@ -8,10 +8,13 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String username;
+	private String name;
 	private String password;
 	private String sex;
 	private String email;
+	private String bcid;
 	private String phone;
+	
 	private String type;
 	private String status;
 	private Timestamp createtime;
@@ -55,6 +58,22 @@ public class User implements Serializable {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getBcid() {
+		return bcid;
+	}
+
+	public void setBcid(String bcid) {
+		this.bcid = bcid;
 	}
 
 	public String getPassword() {
@@ -115,7 +134,9 @@ public class User implements Serializable {
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return "User[username=" + username + ", type=" + type + ", status=" + status + "]";
+		return "User [id=" + id + ", username=" + username + ", name=" + name + ", password=" + password + ", sex="
+				+ sex + ", email=" + email + ", bcid=" + bcid + ", phone=" + phone + ", type=" + type + ", status="
+				+ status + ", createtime=" + createtime + "]";
 	}
+	
 }

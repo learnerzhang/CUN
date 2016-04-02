@@ -12,6 +12,8 @@
 		<property name="password" column="password" type="java.lang.String" length="50" not-null="true"/>
 		<property name="sex" column="sex" type="java.lang.String" length="1"/>
 		<property name="phone" column="phone" type="java.lang.String" length="11"/>
+		<property name="name" column="name" type="java.lang.String"/>
+		<property name="bcid" column="bcid" type="java.lang.String" length="19"/>
 		<property name="email" column="email" type="java.lang.String"/>
 		<property name="type" column="type" type="java.lang.String" length="1" not-null="true"/>
 		<property name="status" column="status" type="java.lang.String" length="3" not-null="true"/>
