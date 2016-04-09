@@ -48,13 +48,19 @@ public class CorpusService {
 		return entityDao.getElementNumByParmaterPairsLikeQuery(Corpus.class, new String[]{"username","flag_tendency","tendency"}, new String[]{username,flag_tendency,tendency}, timestamp, date);
 	}
 	
+	public Integer getAllTendencyUserCorpusNum(String flag_tendency,String tendency,String timestamp,String date){
+		return entityDao.getElementNumByParmaterPairsLikeQuery(Corpus.class, new String[]{"flag_tendency","tendency"}, new String[]{flag_tendency,tendency}, timestamp, date);
+	}
+	
 	public List<Object> getAllTendencyCorpus(Page page,String flag_tendency){
 		return entityDao.getElementByParmaterPage(Corpus.class, page, "flag_tendency", flag_tendency,"timestamp");
 	}
 	public Integer getAllTendencyCorpusNum(String flag_tendency){
 		return entityDao.getElementNumByParmater(Corpus.class, "flag_tendency",flag_tendency);
 	}
-	
+	public Integer getAllTendencyCorpusNum(String flag_tendency,String tendency){
+		return entityDao.getElementNumByParmaterPairs(Corpus.class, new String[]{"flag_tendency","tendency"}, new String[]{flag_tendency,tendency});
+	}
 	public List<Object> getAllFeatureCorpus(Page page,String flag_feature){
 		return entityDao.getElementByParmaterPage(Corpus.class, page, "flag_feature", flag_feature,"timestamp");
 	}

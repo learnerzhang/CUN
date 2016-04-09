@@ -38,7 +38,7 @@ $(function(){
 	<div class="container">
 
 		<div class="leftsidebar_box">
-			<a href="MainServlet?username=${user.username }" target="main">
+			<a href="MainServlet?username=${user.username }&type=${user.type }" target="main">
 				<div class="line">
 					<img src="img/coin01.png" />&nbsp;&nbsp;首页
 				</div>

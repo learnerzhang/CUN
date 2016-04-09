@@ -1,4 +1,6 @@
 <%@page contentType="text/html;charset=utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -101,7 +103,7 @@ body {
 				</div>
 				<div id="canvas-holder" style="float: left;" align="center">
 					<canvas id="chart-area"></canvas>
-					<div style="margin-top: 10px;"><span style="font-size: 18px;font-weight: bold;">详情：</span><span style="font-size: 16px;">[ 积极:<font size="18px" style="font-weight:bold;color:#1971FA;">${tendency[2]}</font> 中立:<font size="18px" style="font-weight:bold;color: #F0DE19;">${tendency[1]}</font> 消极:<font size="18px" style="font-weight:bold;color: rgb(97, 91, 91);">${tendency[0]}</font> ]</span><div>
+					<div style="margin-top: 10px;"><span style="font-size: 18px;font-weight: bold;"><c:choose><c:when test="${user.type eq '2' }">个人数据：</c:when><c:otherwise>总体数据：</c:otherwise></c:choose></span><span style="font-size: 16px;">[ 积极:<font size="18px" style="font-weight:bold;color:#1971FA;">${tendency[2]}</font> 中立:<font size="18px" style="font-weight:bold;color: #F0DE19;">${tendency[1]}</font> 消极:<font size="18px" style="font-weight:bold;color: rgb(97, 91, 91);">${tendency[0]}</font> ]</span><div>
 				</div>
 			</div>
 			<!-- main页面样式end -->
