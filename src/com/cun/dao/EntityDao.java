@@ -22,7 +22,9 @@ public interface EntityDao {
 	
 	public Object queryElementByParmaterPairs(Class clazz,String[] keys, Object[] values);
 	
-	public Integer getElementNumByParmaterPairs(Class clazz,String[] keys, Object[] values); 
+	public Integer getElementNumByParmaterPairs(Class clazz,String[] keys, Object[] values);
+	
+	public Integer getElementNumByParmaterPairsLikeQuery(Class clazz,String[] keys, Object[] values,String key,String date); 
 	
 	public List<Object> getElementByParmaterPairsPage(Class clazz,Page page,String[] keys, Object[] values,String order);// 查询数据信息的方法
 	

@@ -18,7 +18,7 @@
 	<!-- 引用左边和主体部分 --> 
 		<frameset rows="100*" cols="220,*" scrolling="No" framespacing="0" frameborder="no" border="0">
 			<frame src="left" name="leftmenu" id="mainFrame" title="mainFrame"></frame>
-			<frame src="main" name="main" scrolling="yes" noresize="noresize" id="rightFrame" title="rightFrame"></frame>
+			<frame src="MainServlet?username=${user.username }" name="main" scrolling="yes" noresize="noresize" id="rightFrame" title="rightFrame"></frame>
 		</frameset>
 	</frameset>
 </html>

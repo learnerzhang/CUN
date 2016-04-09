@@ -12,7 +12,7 @@ public class Corpus implements Serializable{
 	private String addition;
 	private String tagging;
 	private String label;
-	private String tendency;//0->消极 1->中性 2->消极
+	private String tendency;//0->消极 1->中性 2->积极
 	private String flag_tendency;//标记是否处理过
 	private String flag_feature;//标记是否处理过
 	private String feature;//特征集合[句子特征;词汇特征;...]

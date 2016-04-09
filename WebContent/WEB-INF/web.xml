@@ -35,15 +35,6 @@
     <url-pattern>/left</url-pattern>
   </servlet-mapping>
   <servlet>
-    <display-name>index-main</display-name>
-    <servlet-name>main</servlet-name>
-    <jsp-file>/WEB-INF/sys/main.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>main</servlet-name>
-    <url-pattern>/main</url-pattern>
-  </servlet-mapping>
-  <servlet>
     <display-name>sys-login</display-name>
     <servlet-name>login</servlet-name>
     <jsp-file>/WEB-INF/sys/login.jsp</jsp-file>
@@ -307,5 +298,15 @@
   <servlet-mapping>
     <servlet-name>OpinionServlet</servlet-name>
     <url-pattern>/OpinionServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MainServlet</display-name>
+    <servlet-name>MainServlet</servlet-name>
+    <servlet-class>com.cun.servlet.MainServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MainServlet</servlet-name>
+    <url-pattern>/MainServlet</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -5,7 +5,6 @@ import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -45,7 +44,7 @@ public class AdminServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		UserService service = new UserService();
 		String ptype = request.getParameter("type");
-		log.info("op: "+ptype);
+		log.debug("op: "+ptype);
 		if (ptype.equals("list")) {//列出所有admin
 			String p = request.getParameter("page");
 			Integer totalCount = service.getAllUserNum(type);
@@ -59,7 +58,7 @@ public class AdminServlet extends HttpServlet {
 			response.setContentType("text/plain;charset=utf-8");
 			PrintWriter out = response.getWriter();
 			String uString = IOUtil.readJSONString(request);
-			log.info(uString);
+			log.debug(uString);
 			JSONObject jsonObject = JSONObject.fromObject(uString);
 			JSONObject object = new JSONObject();
 			String username = (String) jsonObject.get("username");
@@ -84,7 +83,7 @@ public class AdminServlet extends HttpServlet {
 		}/*else if (type.equals("edit")){
 			String id = request.getParameter("id");
 			User user = service.getUserById(id);
-			log.info(user);
+			log.debug(user);
 			request.setAttribute("user", user);
 			request.getRequestDispatcher("WEB-INF/connoisseurupdate.jsp").forward(request, response);
 			return;

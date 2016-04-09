@@ -49,13 +49,13 @@ public class ValidateServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String uString = IOUtil.readJSONString(request);
 		JSONObject jsonObject = JSONObject.fromObject(uString);
-		log.info(uString);
+		log.debug(uString);
 		
 		String vcode = (String) jsonObject.get("vcode");
 		HttpSession session = request.getSession();
 		String captcha = (String) session.getAttribute("captcha");
 		if (!StringUtil.equalWithcode(captcha, vcode)) {
-			log.info("验证码错误....");
+			log.debug("验证码错误....");
 			object.put("code", "1");
 		}else {
 			String username = (String) jsonObject.get("username");

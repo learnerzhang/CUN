@@ -37,7 +37,7 @@ public class FeatureServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		String ptype = request.getParameter("type");
 		CorpusService service = new CorpusService();
-		log.info("op: " + ptype);
+		log.debug("op: " + ptype);
 		if (ptype.equals("list")) {
 			String flag_feature = request.getParameter("flag_feature");
 			String p = request.getParameter("page");

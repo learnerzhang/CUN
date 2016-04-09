@@ -45,7 +45,7 @@ public class StuServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		UserService service = new UserService();
 		String ptype = request.getParameter("type");
-		log.info("op: " + ptype);
+		log.debug("op: " + ptype);
 		if (ptype.equals("list")) {// 列出所有admin
 			String p = request.getParameter("page");
 			Integer totalCount = service.getAllUserNum(type);
@@ -59,7 +59,7 @@ public class StuServlet extends HttpServlet {
 			response.setContentType("text/plain;charset=utf-8");
 			PrintWriter out = response.getWriter();
 			String uString = IOUtil.readJSONString(request);
-			log.info(uString);
+			log.debug(uString);
 			JSONObject jsonObject = JSONObject.fromObject(uString);
 			JSONObject object = new JSONObject();
 			String username = (String) jsonObject.get("username");
@@ -84,7 +84,7 @@ public class StuServlet extends HttpServlet {
 		} /*
 			 * else if (type.equals("edit")){ String id =
 			 * request.getParameter("id"); User user = service.getUserById(id);
-			 * log.info(user); request.setAttribute("user", user);
+			 * log.debug(user); request.setAttribute("user", user);
 			 * request.getRequestDispatcher("WEB-INF/connoisseurupdate.jsp").
 			 * forward(request, response); return; }
 			 */else if (ptype.equals("status")) {

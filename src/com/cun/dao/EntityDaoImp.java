@@ -1,5 +1,6 @@
 package com.cun.dao;
 
+import java.sql.Timestamp;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -192,6 +193,22 @@ public class EntityDaoImp implements EntityDao {
 		}
 		tr.commit();
 		return list;
+	}
+
+	@Override
+	public Integer getElementNumByParmaterPairsLikeQuery(Class clazz, String[] keys, Object[] values,String key, String date) {
+		// TODO Auto-generated method stub
+		Session session = HibernateSessionFactory.getSession();// 获得session
+		Transaction tr = session.beginTransaction();// 开启事务
+		Criteria criteria = session.createCriteria(clazz);
+		for (int i = 0; i < keys.length; i++) {
+			criteria.add(Restrictions.eq(keys[i], values[i]));//添加约束
+		}
+		
+		criteria.add(Restrictions.between(key, Timestamp.valueOf(date+" 00:00:00"), Timestamp.valueOf(date+" 23:59:59")));
+		Long count = (Long) criteria.setProjection(Projections.rowCount()).uniqueResult();
+		tr.commit();
+		return count.intValue();
 	}
 
 }

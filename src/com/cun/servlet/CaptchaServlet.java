@@ -21,6 +21,10 @@ import org.apache.commons.logging.LogFactory;
 
 public class CaptchaServlet extends HttpServlet{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected final transient Log log = LogFactory.getLog(CaptchaServlet.class);
 	private int width = 100;// 定义图片的width
 	private int height = 46;// 定义图片的height
@@ -71,7 +75,7 @@ public class CaptchaServlet extends HttpServlet{
 			g.drawString(code, i * 25+5, 30);
 			vCode+=code;
 		}
-		log.info("captcha:"+vCode);
+		log.debug("captcha:"+vCode);
 		HttpSession session = request.getSession();
 		session.setAttribute("captcha", vCode);
 		
