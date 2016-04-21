@@ -148,6 +148,7 @@
 							<!-- <td width="80px" class="tdColor">权限</td> -->
 							<td width="200px" class="tdColor">用户名</td>
 							<td width="180px" class="tdColor">姓名</td>
+							<td width="180px" class="tdColor">性别</td>
 							<td width="430px" class="tdColor">添加时间</td>
 							<td width="130px" class="tdColor">状态</td>
 							<td width="130px" class="tdColor">操作</td>
@@ -158,6 +159,16 @@
 								<%-- <td>${teach.type }</td> --%>
 								<td>${teach.username }</td>
 								<td>${teach.name }</td>
+								<td>
+									<c:choose>
+											<c:when test="${teach.sex=='f' }">
+												女
+											</c:when>
+											<c:when test="${teach.sex=='m' }">
+												男
+											</c:when>
+										</c:choose>
+								</td>
 								<td>${fn:split(teach.createtime,".")[0] }</td>
 								<td>
 									<c:choose>

@@ -33,6 +33,10 @@ public class CorpusService {
 		return (Corpus) entityDao.queryById(Corpus.class, Integer.valueOf(id));
 	}
 	
+	public Integer getAllCorpusNum(){
+		return entityDao.getTotalElementNum(Corpus.class);
+	}
+	
 	public List<Object> getAllTendencyUserCorpus(Page page,String username,String flag_tendency){
 		return entityDao.getElementByParmaterPairsPage(Corpus.class, page, new String[]{"username","flag_tendency"}, new String[]{username,flag_tendency},"timestamp");
 	}

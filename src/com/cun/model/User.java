@@ -12,6 +12,7 @@ public class User implements Serializable {
 	private String password;
 	private String sex;
 	private String email;
+	private String uid;
 	private String bcid;
 	private String phone;
 	
@@ -66,6 +67,14 @@ public class User implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getUid() {
+		return uid;
+	}
+
+	public void setUid(String uid) {
+		this.uid = uid;
 	}
 
 	public String getBcid() {

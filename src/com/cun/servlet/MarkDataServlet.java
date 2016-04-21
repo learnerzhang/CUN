@@ -2,6 +2,7 @@ package com.cun.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -13,7 +14,9 @@ import javax.servlet.http.HttpSession;
 import com.cun.model.Corpus;
 import com.cun.model.Page;
 import com.cun.model.User;
+import com.cun.model.UserData;
 import com.cun.service.CorpusService;
+import com.cun.service.UserService;
 import com.cun.util.PageUtil;
 
 import net.sf.json.JSONObject;
@@ -40,6 +43,7 @@ public class MarkDataServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		String type = request.getParameter("type");
 		CorpusService service = new CorpusService();
+		UserService userService = new UserService();
 		
 		if (type.equals("info")) {
 			HttpSession session = request.getSession();
@@ -82,9 +86,45 @@ public class MarkDataServlet extends HttpServlet {
 			out.write(object.toString());
 			return;
 		}else if (type.equals("other")) {
-			response.getWriter().append("Served at: ").append(request.getContextPath()+" other");
+			List<UserData> datas = new ArrayList<>();
+			List<Object> users = userService.getAllUser(PageUtil.createPage(10, userService.getAllUserNum("2"), 1), "2");
+			
+			for (Object object : users) {
+				
+				User user = (User) object;
+				String username = user.getUsername();
+				String name = user.getName();
+				Integer totalNum = service.getAllTendencyUserCorpusNum(username, "1");
+				Integer negNum = service.getAllTendencyUserCorpusNum(username, "1", "0");
+				Integer neuNum = service.getAllTendencyUserCorpusNum(username, "1", "1");
+				Integer posNum = service.getAllTendencyUserCorpusNum(username, "1", "2");
+				UserData userData = new UserData(username, name, totalNum, posNum, negNum, neuNum);
+				datas.add(userData);
+			}
+			
+			request.setAttribute("datas", datas);
+			request.getRequestDispatcher("WEB-INF/sys/comparedata.jsp").forward(request, response);
+			return;
 		}else if (type.equals("all")) {
-			response.getWriter().append("Served at: ").append(request.getContextPath()+" all");
+			List<UserData> datas = new ArrayList<>();
+			List<Object> users = userService.getAllUser(PageUtil.createPage(10, userService.getAllUserNum("2"), 1), "2");
+			
+			for (Object object : users) {
+				
+				User user = (User) object;
+				String username = user.getUsername();
+				String name = user.getName();
+				Integer totalNum = service.getAllTendencyUserCorpusNum(username, "1");
+				Integer negNum = service.getAllTendencyUserCorpusNum(username, "1", "0");
+				Integer neuNum = service.getAllTendencyUserCorpusNum(username, "1", "1");
+				Integer posNum = service.getAllTendencyUserCorpusNum(username, "1", "2");
+				UserData userData = new UserData(username, name, totalNum, posNum, negNum, neuNum);
+				datas.add(userData);
+			}
+			
+			request.setAttribute("datas", datas);
+			request.getRequestDispatcher("WEB-INF/sys/markdata.jsp").forward(request, response);
+			return;
 		}
 		
 	}

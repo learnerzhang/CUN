@@ -87,6 +87,7 @@ public class UserServlet extends HttpServlet {
 			User user = service.getUserById(id);
 			if (user.getType().equals("2")) {
 				user.setBcid(jsonObject.getString("bcid"));
+				user.setUid(jsonObject.getString("uid"));
 			}
 			user.setName(name);
 			user.setPhone(phone);

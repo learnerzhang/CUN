@@ -39,13 +39,19 @@
 			if ("${user.type}"=='2') {//学生
 				
 				var card = $("#bcid").val().trim();
+				var uid = $("#uid").val().trim();
 				if(card.length!=19 && isNaN(card)){
 					$("#bcid").css("border-color","red");
+					return;
+				}
+				if(uid.length!=18){
+					$("#uid").css("border-color","red");
 					return;
 				}
 				paratmeter = {
 						"id" : "${user.id}",
 						"name" : $("#name").val(),
+						"uid" : $("#uid").val(),
 						"bcid" : $("#bcid").val(),
 						"phone" : $("#phone").val(),
 						"email" : $("#email").val(),
@@ -108,6 +114,8 @@
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：<input type="text" class="input3" id="name" value="${user.name }"/>
 					</div>
 					<c:if test="${user.type eq '2' }">
+						<div class="bbD"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;身份证号：<input type="text" class="input3" id="uid" value="${user.uid }"/>
+						</div>
 						<div class="bbD"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;银行卡号：<input type="text" class="input3" id="bcid" value="${user.bcid }"/>
 						</div>
 					</c:if>
