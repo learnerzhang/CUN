@@ -37,27 +37,20 @@ body {
 		           (now.getMonth() + 1)+"月"+now.getDate()+"号" ],
 		datasets : [
 				{
-					fillColor : "#1971FA",
-					strokeColor : "#4A83DD",
-					highlightFill : "#2719FA",
-					highlightStroke : "#1966DF",
-					data : [ "${weekdata[6][2]}", "${weekdata[5][2]}","${weekdata[4][2]}", "${weekdata[3][2]}",
-					         "${weekdata[2][2]}", "${weekdata[1][2]}", "${weekdata[0][2]}" ]
-				},{
-					fillColor : "#D2C755",
-					strokeColor : "#DFD56E",
-					highlightFill : "#F0DE19",
-					highlightStroke : "#DFCF2D",
-					data : [ "${weekdata[6][1]}", "${weekdata[5][1]}","${weekdata[4][1]}", "${weekdata[3][1]}",
-					         "${weekdata[2][1]}", "${weekdata[1][1]}", "${weekdata[0][1]}"]
-				} ,{
 					fillColor : "rgb(153, 150, 150)",
 					strokeColor : "rgb(189, 186, 186)",
 					highlightFill : "rgb(97, 91, 91)",
 					highlightStroke : "rgb(128, 123, 123)",
 					data : ["${weekdata[6][0]}", "${weekdata[5][0]}","${weekdata[4][0]}", "${weekdata[3][0]}",
 					         "${weekdata[2][0]}", "${weekdata[1][0]}", "${weekdata[0][0]}"]
-				}]
+				},{
+					fillColor : "#4390b9",
+					strokeColor : "#0E95DD",
+					highlightFill : "#1955D7",
+					highlightStroke : "#013CF7",
+					data : [ "${weekdata[6][1]}", "${weekdata[5][1]}","${weekdata[4][1]}", "${weekdata[3][1]}",
+					         "${weekdata[2][1]}", "${weekdata[1][1]}", "${weekdata[0][1]}"]
+				} ]
 
 	}
 
@@ -65,17 +58,12 @@ body {
 		value : "${tendency[0]}",
 		color : "rgb(153, 150, 150)",
 		highlight : "rgb(97, 91, 91)",
-		label : "消极"
+		label : "中性句"
 	},{
 		value : "${tendency[1]}",
-		color : "#D2C755",
-		highlight : "#F0DE19",
-		label : "中立"
-	}, {
-		value : "${tendency[2]}",
-		color : "#1971FA",
-		highlight : "#2719FA",
-		label : "积极"
+		color : "#4390b9",
+		highlight : "#1955D7",
+		label : "情感句"
 	}];
 
 	window.onload = function() {
@@ -103,7 +91,7 @@ body {
 				</div>
 				<div id="canvas-holder" style="float: left;" align="center">
 					<canvas id="chart-area"></canvas>
-					<div style="margin-top: 10px;"><span style="font-size: 18px;font-weight: bold;"><c:choose><c:when test="${user.type eq '2' }">个人数据：</c:when><c:otherwise>总体数据：</c:otherwise></c:choose></span><span style="font-size: 16px;">[ 积极:<font size="18px" style="font-weight:bold;color:#1971FA;">${tendency[2]}</font> 中立:<font size="18px" style="font-weight:bold;color: #F0DE19;">${tendency[1]}</font> 消极:<font size="18px" style="font-weight:bold;color: rgb(97, 91, 91);">${tendency[0]}</font> ]</span><div>
+					<div style="margin-top: 10px;"><span style="font-size: 18px;font-weight: bold;"><c:choose><c:when test="${user.type eq '2' }">个人数据：</c:when><c:otherwise>总体数据：</c:otherwise></c:choose></span><span style="font-size: 16px;">[中性句:<font size="18px" style="font-weight:bold;color: rgb(97, 91, 91);">${tendency[0]}</font> 情感句:<font size="18px" style="font-weight:bold;color: #4390b9;">${tendency[1]}</font> ]</span><div>
 				</div>
 			</div>
 			<!-- main页面样式end -->

@@ -10,12 +10,12 @@
 		<property name="connection.driver_class">
 			com.mysql.jdbc.Driver<!-- 这里是Oracle 9i的JDBC driver class名 -->
 		</property>
-		<property name="connection.url">
-			jdbc:mysql://114.215.159.182:3306/cun?useUnicode=true&amp;characterEncoding=UTF-8
-		</property>
 		<!-- <property name="connection.url">
-			jdbc:mysql://127.0.0.1:3306/cun?useUnicode=true&amp;characterEncoding=UTF-8
+			jdbc:mysql://114.215.159.182:3306/cun?useUnicode=true&amp;characterEncoding=UTF-8
 		</property> -->
+		<property name="connection.url">
+			jdbc:mysql://127.0.0.1:3306/cun?useUnicode=true&amp;characterEncoding=UTF-8
+		</property>
 		<property name="connection.username">
 			root
 		</property>

@@ -95,10 +95,9 @@ public class MarkDataServlet extends HttpServlet {
 				String username = user.getUsername();
 				String name = user.getName();
 				Integer totalNum = service.getAllTendencyUserCorpusNum(username, "1");
-				Integer negNum = service.getAllTendencyUserCorpusNum(username, "1", "0");
-				Integer neuNum = service.getAllTendencyUserCorpusNum(username, "1", "1");
-				Integer posNum = service.getAllTendencyUserCorpusNum(username, "1", "2");
-				UserData userData = new UserData(username, name, totalNum, posNum, negNum, neuNum);
+				Integer neuNum = service.getAllTendencyUserCorpusNum(username, "1", "o;");
+				Integer sentiNum = totalNum - neuNum;
+				UserData userData = new UserData(username, name, totalNum, neuNum, sentiNum);
 				datas.add(userData);
 			}
 			
@@ -114,11 +113,11 @@ public class MarkDataServlet extends HttpServlet {
 				User user = (User) object;
 				String username = user.getUsername();
 				String name = user.getName();
+				
 				Integer totalNum = service.getAllTendencyUserCorpusNum(username, "1");
-				Integer negNum = service.getAllTendencyUserCorpusNum(username, "1", "0");
-				Integer neuNum = service.getAllTendencyUserCorpusNum(username, "1", "1");
-				Integer posNum = service.getAllTendencyUserCorpusNum(username, "1", "2");
-				UserData userData = new UserData(username, name, totalNum, posNum, negNum, neuNum);
+				Integer neuNum = service.getAllTendencyUserCorpusNum(username, "1", "o;");
+				Integer sentiNum = totalNum - neuNum;
+				UserData userData = new UserData(username, name, totalNum, neuNum, sentiNum);
 				datas.add(userData);
 			}
 			

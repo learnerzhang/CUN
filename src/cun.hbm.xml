@@ -30,11 +30,12 @@
 		<property name="context" column="context" type="java.lang.String" not-null="true"/>
 		<property name="addition" column="addition" type="java.lang.String"/>
 		<property name="tagging" column="tagging" type="java.lang.String"/>
-		<property name="label" column="label" type="java.lang.String"/>
-		<property name="tendency" column="tendency" type="java.lang.String" length="1"/><!-- 0->消极 1->中性 2->积极-->
+		<property name="tendency" column="tendency" type="java.lang.String"/>
 		<property name="flag_tendency" column="flag_tendency" type="java.lang.String" length="1" not-null="true" /><!-- 0未标记   1已标记 -->
 		<property name="feature" column="feature" type="java.lang.String"/>
-		<property name="flag_feature" column="flag_feature" type="java.lang.String" length="1" not-null="true" /><!--特征  0未标记   1已标记 -->
+		<property name="type" column="type" type="java.lang.String"/>
+		<property name="negative" column="negative" type="java.lang.String"/>
+		<property name="degree" column="degree" type="java.lang.String"/>
 	</class>
 	
 	<class name="com.cun.model.Opinion" table="opinion">

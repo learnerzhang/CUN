@@ -10,27 +10,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
-import com.cun.model.Corpus;
+import com.cun.model.Opinion;
 import com.cun.model.Page;
-import com.cun.service.CorpusService;
+import com.cun.service.OpinionService;
 import com.cun.util.IOUtil;
 import com.cun.util.PageUtil;
 
 import net.sf.json.JSONObject;
 
 /**
- * Servlet implementation class TendencyServlet
+ * Servlet implementation class OpinionServlet
  */
-public class TendencyServlet extends HttpServlet {
+public class OpinionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private transient final Log log = LogFactory.getLog(TendencyServlet.class);
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public TendencyServlet() {
+    public OpinionServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,51 +38,48 @@ public class TendencyServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
-		String ptype = request.getParameter("type");
-		CorpusService service = new CorpusService();
-		log.debug("op: " + ptype);
-		if (ptype.equals("list")) {
-			String flag_tendency = request.getParameter("flag_tendency");
-			String p = request.getParameter("page");
-			Integer totalCount = service.getAllTendencyCorpusNum(flag_tendency);
-			Page page = PageUtil.createPage(10, totalCount, Integer.valueOf(p));
-			List<Object> corpus = service.getAllTendencyCorpus(page, flag_tendency);
-			
-			request.setAttribute("flag_tendency",flag_tendency);
-			request.setAttribute("corpus",corpus);
-			request.setAttribute("page", page);
-			request.getRequestDispatcher("WEB-INF/sys/corpus_tendency.jsp").forward(request, response);
-		}else if (ptype.equals("add")) {
-			
+		
+		String type = request.getParameter("type");
+		OpinionService service = new OpinionService();
+		if (type.equals("add")) {
 			response.setContentType("text/plain;charset=utf-8");
+			JSONObject object = new JSONObject();
+			
 			PrintWriter out = response.getWriter();
 			String uString = IOUtil.readJSONString(request);
 			JSONObject jsonObject = JSONObject.fromObject(uString);
 			
-			JSONObject object = new JSONObject();
-			
-			String username = (String) jsonObject.get("username");
 			String context = (String) jsonObject.get("context");
-			String tendency = (String) jsonObject.get("tendency");
-			Corpus corpus = new Corpus();
+			String username = (String) jsonObject.get("username");
+			Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 			
-			corpus.setContext(context);
-			corpus.setUsername(username);
-			corpus.setFlag_tendency("1");
-			corpus.setTendency(tendency);
-			corpus.setTimestamp(new Timestamp(System.currentTimeMillis()));
-			
+			Opinion opinion = new Opinion();
+			opinion.setTimestamp(timestamp);
+			opinion.setContext(context);
+			opinion.setUsername(username);
+			System.out.println(opinion);
 			try {
-				service.AddCorpus(corpus);
+				service.AddOpinion(opinion);
 				object.put("code", "0");
 			} catch (Exception e) {
 				// TODO: handle exception
 				object.put("code", "1");
 			}
 			out.write(object.toString());
+		}else if (type.equals("list")) {
+			String p = request.getParameter("page");
+			Integer total = service.getAllOpinionNum();
+			Page page = PageUtil.createPage(10, total, Integer.valueOf(p));
+			
+			List<Object> opinions = service.getAllOpinion(page);
+			
+			request.setAttribute("page", page);
+			request.setAttribute("opinions", opinions);
+			request.getRequestDispatcher("WEB-INF/sys/opinion.jsp").forward(request, response);
 			return;
 		}
 	}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

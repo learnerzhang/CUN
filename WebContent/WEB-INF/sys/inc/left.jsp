@@ -91,14 +91,14 @@ $(function(){
 					<img class="coin11" src="img/coin111.png" /><img class="coin22" src="img/coin222.png" /><a class="cks" href="TendencyServlet?type=list&flag_tendency=1&page=1"
 						target="main">情感已标记</a><img class="icon5" src="img/coin21.png" />
 				</dd>
-				<dd>
+				<!-- <dd>
 					<img class="coin11" src="img/coin111.png" /><img class="coin22" src="img/coin222.png" /><a class="cks" href="FeatureServlet?type=list&flag_feature=0&page=1"
 						target="main">特征未标记</a><img class="icon5" src="img/coin21.png" />
 				</dd>
 				<dd>
 					<img class="coin11" src="img/coin111.png" /><img class="coin22" src="img/coin222.png" /><a class="cks" href="FeatureServlet?type=list&flag_feature=1&page=1"
 						target="main">特征已标记</a><img class="icon5" src="img/coin21.png" />
-				</dd>
+				</dd> -->
 				<dd>
 					<img class="coin11" src="img/coin111.png" /><img class="coin22" src="img/coin222.png" />
 					<a class="cks" href="MarkDataServlet?type=all&page=1" target="main">标记详情</a><img class="icon5" src="img/coin21.png" />
@@ -146,7 +146,7 @@ $(function(){
 						class="cks">开始标记</a><img class="icon5" src="img/coin21.png" />
 				</dd>
 			</dl>
-			<dl class="system_log">
+			<!-- <dl class="system_log">
 				<dt>
 					<img class="icon1" src="img/coin15.png" /><img class="icon2"
 						src="img/coin16.png" />特征标记<img class="icon3"
@@ -158,7 +158,7 @@ $(function(){
 						src="img/coin222.png" /><a href="MarkFeatureServlet" target="main" class="cks">开始标记</a><img class="icon5"
 						src="img/coin21.png" />
 				</dd>
-			</dl>
+			</dl> -->
 			<dl class="system_log">
 				<dt>
 					<img class="icon1" src="img/coin11.png" /><img class="icon2"
@@ -171,11 +171,11 @@ $(function(){
 						src="img/coin222.png" /><a href="MarkDataServlet?type=info&page=1" target="main"
 						class="cks">个人数据</a><img class="icon5" src="img/coin21.png" />
 				</dd>
-				<dd>
+				<!-- <dd>
 					<img class="coin11" src="img/coin111.png" /><img class="coin22"
 						src="img/coin222.png" /><a href="MarkDataServlet?type=other&page=1" target="main"
 						class="cks">对比数据</a><img class="icon5" src="img/coin21.png" />
-				</dd>
+				</dd> -->
 				<dd>
 					<img class="coin11" src="img/coin111.png" /><img class="coin22"
 						src="img/coin222.png" /><a href="useropinion" target="main"

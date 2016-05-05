@@ -11,10 +11,11 @@ public class Corpus implements Serializable{
 	private String context;
 	private String addition;
 	private String tagging;
-	private String label;
-	private String tendency;//0->消极 1->中性 2->积极
+	private String negative;
+	private String degree;
+	private String type;
+	private String tendency;
 	private String flag_tendency;//标记是否处理过
-	private String flag_feature;//标记是否处理过
 	private String feature;//特征集合[句子特征;词汇特征;...]
 	public Integer getId() {
 		return id;
@@ -52,12 +53,6 @@ public class Corpus implements Serializable{
 	public void setTagging(String tagging) {
 		this.tagging = tagging;
 	}
-	public String getLabel() {
-		return label;
-	}
-	public void setLabel(String label) {
-		this.label = label;
-	}
 	public String getTendency() {
 		return tendency;
 	}
@@ -70,23 +65,36 @@ public class Corpus implements Serializable{
 	public void setFlag_tendency(String flag_tendency) {
 		this.flag_tendency = flag_tendency;
 	}
-	public String getFlag_feature() {
-		return flag_feature;
-	}
-	public void setFlag_feature(String flag_feature) {
-		this.flag_feature = flag_feature;
-	}
 	public String getFeature() {
 		return feature;
 	}
 	public void setFeature(String feature) {
 		this.feature = feature;
 	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	
+	public String getNegative() {
+		return negative;
+	}
+	public void setNegative(String negative) {
+		this.negative = negative;
+	}
+	public String getDegree() {
+		return degree;
+	}
+	public void setDegree(String degree) {
+		this.degree = degree;
+	}
 	@Override
 	public String toString() {
 		return "Corpus [id=" + id + ", username=" + username + ", timestamp=" + timestamp + ", context=" + context
-				+ ", addition=" + addition + ", tagging=" + tagging + ", label=" + label + ", tendency=" + tendency
-				+ ", flag_tendency=" + flag_tendency + ", flag_feature=" + flag_feature + ", feature=" + feature + "]";
+				+ ", addition=" + addition + ", tagging=" + tagging + ", negative=" + negative + ", degree=" + degree
+				+ ", type=" + type + ", tendency=" + tendency + ", flag_tendency=" + flag_tendency + ", feature="
+				+ feature + "]";
 	}
-	
 }

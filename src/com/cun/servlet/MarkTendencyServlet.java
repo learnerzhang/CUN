@@ -9,6 +9,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import com.cun.model.Corpus;
 import com.cun.model.Page;
 import com.cun.service.CorpusService;
@@ -22,7 +26,7 @@ import net.sf.json.JSONObject;
  */
 public class MarkTendencyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    private transient Log log = LogFactory.getLog(MarkTendencyServlet.class);
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -48,15 +52,24 @@ public class MarkTendencyServlet extends HttpServlet {
 			String uString = IOUtil.readJSONString(request);
 			JSONObject jsonObject = JSONObject.fromObject(uString);
 			String id = jsonObject.getString("id");
-			String tendency = jsonObject.getString("type");//倾向类型
+			String tendency = jsonObject.getString("tendency");//倾向类型
 			String username = jsonObject.getString("username");
-			Corpus corpus = service.getCorpusById(id);
 			
+			Corpus corpus = service.getCorpusById(id);
 			corpus.setFlag_tendency("1");
+			corpus.setTendency(tendency);
 			corpus.setUsername(username);
 			corpus.setTendency(tendency);
+			
+			if (!tendency.equals("o;")) {//没有情感的词语
+				corpus.setType(jsonObject.getString("type"));
+				corpus.setFeature(jsonObject.getString("feature"));
+				corpus.setNegative(jsonObject.getString("negative"));
+				corpus.setDegree(jsonObject.getString("degree"));
+			}
 			Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 			corpus.setTimestamp(timestamp);
+			log.debug(corpus);
 			try {
 				service.updateCorpus(corpus);
 				object.put("code", "0");

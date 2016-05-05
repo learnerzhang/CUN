@@ -53,10 +53,7 @@
 							<td>${c.context }</td>
 							<td>${c.addition }</td>
 							<td>
-								<table border="1px solid gray">
-									<tr><td>${c.tagging }</td></tr>
-									<tr><td>${c.label }</td></tr>
-								</table>
+								${c.tagging }
 							</td>
 							<td>
 								<c:choose>
@@ -67,9 +64,7 @@
 							<td>
 								<c:choose>
 									<c:when test="${empty c.tendency}">待定</c:when>
-									<c:when test="${c.tendency==0}">消极</c:when>
-									<c:when test="${c.tendency==1}">中性</c:when>
-									<c:when test="${c.tendency==2}">积极</c:when>
+									<c:otherwise>${c.tendency}</c:otherwise>
 								</c:choose>
 							</td>
 						</tr>

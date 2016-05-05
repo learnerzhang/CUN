@@ -63,7 +63,7 @@ $(function(){
 					<div class="bbD">
 						<p class="bbDP">
 							<button class="btn_ok btn_yes" href="#">提交</button>
-							<a class="btn_ok btn_no" href="main">取消</a>
+							<a class="btn_ok btn_no" href="MainServlet?username=${user.username }&type=${user.type }">取消</a>
 						</p>
 					</div>
 				</div>
